@@ -623,3 +623,70 @@ html,body{max-width:100%;overflow-x:clip}
   .compact-header-actions{display:flex!important}
   .compact-appointment{display:none!important}
 }
+
+/* Alpha 0.18 — restore readable header scale while keeping one desktop row. */
+@media (min-width:901px){
+  .header-glass{
+    display:flex!important;flex-wrap:nowrap!important;align-items:center!important;
+    width:calc(100% - 20px)!important;max-width:1640px!important;
+    min-height:92px!important;padding:9px 12px 9px 15px!important;
+    gap:clamp(9px,1vw,16px)!important;box-sizing:border-box!important;
+  }
+  .brand-lockup{flex:0 0 clamp(180px,16vw,220px)!important;gap:9px!important;min-width:0!important;padding:2px 5px 2px 0!important}
+  .brand-mark{width:64px!important}
+  .brand-name{font-size:clamp(1rem,1.15vw,1.14rem)!important;font-weight:700!important;white-space:nowrap!important}
+  .brand-subtitle{font-size:clamp(.56rem,.62vw,.68rem)!important;line-height:1.2!important;max-width:178px!important}
+  .header-nav{flex:1 1 auto!important;min-width:0!important;display:flex!important;justify-content:flex-start!important;align-items:center!important;gap:clamp(10px,1.15vw,20px)!important;padding:0!important}
+  .header-nav a{font-size:clamp(.72rem,.82vw,.88rem)!important;font-weight:700!important;padding:11px 0!important;white-space:nowrap!important}
+  .header-actions{flex:0 0 auto!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important;padding:0!important;border:0!important;min-width:0!important}
+  .header-actions .meta-link{min-height:52px!important;grid-template-columns:42px minmax(0,1fr)!important;gap:9px!important;padding:5px 7px!important;border-radius:16px!important}
+  .header-actions .meta-icon{width:42px!important;height:42px!important;border-radius:13px!important}
+  .header-actions .meta-icon svg{width:25px!important;height:25px!important}
+  .header-actions .meta-copy strong{font-size:.79rem!important;line-height:1.18!important;font-weight:700!important}
+  .header-actions .meta-copy small{font-size:.70rem!important;line-height:1.2!important;white-space:nowrap!important}
+  .header-actions .location-link{width:220px!important;min-width:220px!important;flex:0 0 220px!important}
+  .header-actions .phone-link{width:198px!important;min-width:198px!important;flex:0 0 198px!important}
+  .header-actions .phone-link .meta-copy strong{font-size:.82rem!important;white-space:nowrap!important}
+  .header-actions .social-group{width:82px!important;min-width:82px!important;flex:0 0 82px!important;gap:5px!important}
+  .header-actions .social-link{width:38px!important;height:38px!important;flex:0 0 38px!important;border-radius:12px!important}
+  .header-actions .social-svg--vk,.header-actions .social-svg--max{width:24px!important;height:24px!important}
+  .header-actions .btn-appointment{
+    width:200px!important;min-width:200px!important;flex:0 0 200px!important;
+    min-height:52px!important;padding-inline:14px!important;font-size:.70rem!important;
+    font-weight:700!important;letter-spacing:.025em!important
+  }
+  .compact-header-actions,.header-contact-strip{display:none!important}
+}
+/* Narrow desktop/tablet: preserve the same readable hierarchy, only reduce spacing. */
+@media (min-width:901px) and (max-width:1180px){
+  .header-glass{gap:7px!important;padding-inline:11px!important}
+  .brand-lockup{flex-basis:178px!important}.brand-mark{width:60px!important}
+  .brand-name{font-size:.94rem!important}.brand-subtitle{font-size:.53rem!important;max-width:150px!important}
+  .header-nav{gap:8px!important}.header-nav a{font-size:.68rem!important}
+  .header-actions{gap:4px!important}
+  .header-actions .location-link{width:180px!important;min-width:180px!important;flex-basis:180px!important}
+  .header-actions .phone-link{width:178px!important;min-width:178px!important;flex-basis:178px!important}
+  .header-actions .meta-link{grid-template-columns:36px minmax(0,1fr)!important;gap:7px!important;min-height:48px!important}
+  .header-actions .meta-icon{width:36px!important;height:36px!important}
+  .header-actions .meta-icon svg{width:22px!important;height:22px!important}
+  .header-actions .meta-copy strong{font-size:.70rem!important}.header-actions .meta-copy small{font-size:.62rem!important}
+  .header-actions .social-group{width:72px!important;min-width:72px!important;flex-basis:72px!important}
+  .header-actions .social-link{width:34px!important;height:34px!important;flex-basis:34px!important}
+  .header-actions .social-svg--vk,.header-actions .social-svg--max{width:21px!important;height:21px!important}
+  .header-actions .btn-appointment{width:170px!important;min-width:170px!important;flex-basis:170px!important;font-size:.62rem!important}
+}
+@media (min-width:901px) and (max-width:1000px){
+  .header-glass{gap:5px!important;padding-inline:8px!important;min-height:86px!important}
+  .brand-lockup{flex-basis:155px!important}.brand-mark{width:54px!important}
+  .brand-name{font-size:.84rem!important}.brand-subtitle{font-size:.47rem!important;max-width:125px!important}
+  .header-nav{gap:5px!important}.header-nav a{font-size:.58rem!important}
+  .header-actions{gap:3px!important}
+  .header-actions .location-link{width:150px!important;min-width:150px!important;flex-basis:150px!important}
+  .header-actions .phone-link{width:150px!important;min-width:150px!important;flex-basis:150px!important}
+  .header-actions .meta-link{grid-template-columns:30px minmax(0,1fr)!important;gap:5px!important;min-height:44px!important}
+  .header-actions .meta-icon{width:30px!important;height:30px!important}.header-actions .meta-icon svg{width:19px!important;height:19px!important}
+  .header-actions .meta-copy strong{font-size:.62rem!important}.header-actions .meta-copy small{font-size:.54rem!important}
+  .header-actions .social-group{width:64px!important;min-width:64px!important;flex-basis:64px!important}.header-actions .social-link{width:30px!important;height:30px!important;flex-basis:30px!important}
+  .header-actions .social-svg--vk,.header-actions .social-svg--max{width:19px!important;height:19px!important}
+  .header-actions .btn-appointment{width:150px!important;min-width:150px!important;flex-basis:150px!important;min-height:46px!important;font-size:.54rem!important}
+}
