@@ -1,4 +1,4 @@
-/* Alpha 0.10 — larger brand mark + Android "Desktop site" mirrors desktop header content. */
+/* Alpha 0.11 — stable Android desktop header, no collisions. */
 .brand-mark{width:66px!important}
 @media (min-width:1320px) and (max-width:1459px){.brand-mark{width:61px!important}}
 @media (min-width:1051px) and (max-width:1319px){.brand-mark{width:60px!important}}
@@ -8,23 +8,22 @@
 @media (max-width:390px){.brand-mark{width:51px!important}}
 @media (max-width:350px){.brand-mark{width:48px!important}}
 
-/* Android browsers expose different virtual widths when "Desktop site" is enabled.
-   On touch-first hardware above the mobile breakpoint we keep the SAME content as desktop:
-   primary nav + address + phone + socials + appointment. No burger. */
+/* Android "Desktop site": same visible content as desktop, without burger.
+   Each contact/action has a non-shrinking basis so text can never run under socials. */
 @media (any-pointer:coarse) and (min-width:901px){
   .header-glass{
     width:min(calc(100% - 20px),1640px)!important;
-    grid-template-columns:minmax(148px,176px) minmax(250px,1fr) auto!important;
+    grid-template-columns:minmax(148px,172px) minmax(236px,1fr) auto!important;
     grid-template-rows:1fr!important;
     align-items:center!important;
-    gap:5px!important;
+    gap:4px!important;
     min-height:82px!important;
-    padding:7px 8px 7px 11px!important;
+    padding:7px 8px 7px 10px!important;
   }
   .brand-lockup{grid-column:1!important;grid-row:1!important;gap:7px!important;padding:0!important;position:relative!important;z-index:2!important}
   .brand-mark{width:58px!important}
-  .brand-name{font-size:1rem!important;letter-spacing:.018em!important}
-  .brand-subtitle{display:block!important;font-size:.56rem!important;line-height:1.15!important;max-width:112px!important}
+  .brand-name{font-size:.98rem!important;letter-spacing:.018em!important}
+  .brand-subtitle{display:block!important;font-size:.54rem!important;line-height:1.15!important;max-width:108px!important}
   .brand-subtitle--mobile{display:none!important}
 
   .header-nav{
@@ -33,26 +32,27 @@
     grid-row:1!important;
     min-width:0!important;
     justify-content:center!important;
-    gap:clamp(4px,.52vw,9px)!important;
-    padding:0 1px!important;
+    gap:clamp(3px,.48vw,8px)!important;
+    padding:0!important;
   }
-  .header-nav a{font-size:clamp(.61rem,.66vw,.73rem)!important;padding:9px 0!important;white-space:nowrap!important;font-weight:650!important}
+  .header-nav a{font-size:clamp(.59rem,.64vw,.72rem)!important;padding:9px 0!important;white-space:nowrap!important;font-weight:650!important}
 
   .header-actions{
     display:flex!important;
     grid-column:3!important;
     grid-row:1!important;
-    min-width:0!important;
+    min-width:max-content!important;
     align-items:center!important;
     justify-content:flex-end!important;
     gap:3px!important;
     padding:0!important;
     border:0!important;
+    overflow:visible!important;
   }
   .header-actions .location-link,
   .header-actions .phone-link,
   .header-actions .social-group,
-  .header-actions .btn-appointment{display:flex!important}
+  .header-actions .btn-appointment{display:flex!important;flex-shrink:0!important}
 
   .header-actions .meta-link{
     display:grid!important;
@@ -61,55 +61,64 @@
     min-height:44px!important;
     padding:3px 4px!important;
     border-radius:12px!important;
+    overflow:hidden!important;
   }
   .header-actions .meta-icon{width:30px!important;height:30px!important;border-radius:10px!important}
   .header-actions .meta-icon svg{width:18px!important;height:18px!important}
-  .header-actions .meta-copy{gap:1px!important}
-  .header-actions .meta-copy strong{font-size:.62rem!important;line-height:1.12!important}
-  .header-actions .meta-copy small{font-size:.50rem!important;line-height:1.12!important;white-space:normal!important;overflow:visible!important}
-  .header-actions .location-link{width:116px!important}
-  .header-actions .location-link .meta-copy small{max-width:76px!important}
-  .header-actions .phone-link{width:128px!important}
-  .header-actions .phone-link .meta-copy strong{font-size:.62rem!important;white-space:nowrap!important}
+  .header-actions .meta-copy{gap:1px!important;min-width:0!important}
+  .header-actions .meta-copy strong{font-size:.60rem!important;line-height:1.12!important}
+  .header-actions .meta-copy small{font-size:.49rem!important;line-height:1.12!important;white-space:normal!important;overflow:visible!important}
 
-  .header-actions .social-group{flex:0 0 auto!important;gap:3px!important;padding:0!important}
-  .header-actions .social-link{width:31px!important;height:31px!important;border-radius:10px!important}
+  .header-actions .location-link{width:116px!important;min-width:116px!important;flex-basis:116px!important}
+  .header-actions .location-link .meta-copy small{max-width:76px!important}
+
+  .header-actions .phone-link{width:150px!important;min-width:150px!important;flex-basis:150px!important}
+  .header-actions .phone-link .meta-copy{overflow:hidden!important}
+  .header-actions .phone-link .meta-copy strong{font-size:.59rem!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:clip!important}
+
+  .header-actions .social-group{flex:0 0 65px!important;width:65px!important;min-width:65px!important;gap:3px!important;padding:0!important}
+  .header-actions .social-link{width:31px!important;height:31px!important;border-radius:10px!important;flex:0 0 31px!important}
   .header-actions .social-svg--vk,.header-actions .social-svg--max{width:20px!important;height:20px!important}
 
   .header-actions .btn-appointment{
-    flex:0 0 auto!important;
+    flex:0 0 116px!important;
+    width:116px!important;
     min-width:116px!important;
     min-height:44px!important;
-    padding-inline:9px!important;
-    font-size:.58rem!important;
-    letter-spacing:.025em!important;
+    padding-inline:8px!important;
+    font-size:.56rem!important;
+    letter-spacing:.02em!important;
   }
   .header-actions .btn-label{white-space:nowrap!important}
 
-  /* Desktop mode must not expose the mobile control at all. */
   .compact-header-actions{display:none!important}
   .header-contact-strip{display:none!important}
 }
 
-/* Tightest Android desktop-mode virtual viewports (~900–1020 CSS px).
-   Keep every desktop header item, only reduce chrome around them. */
+/* Tightest virtual desktop widths. Keep all desktop controls; only compress chrome. */
 @media (any-pointer:coarse) and (min-width:901px) and (max-width:1020px){
-  .header-glass{grid-template-columns:minmax(137px,150px) minmax(238px,1fr) auto!important;gap:3px!important;padding-inline:8px 6px!important}
-  .brand-mark{width:54px!important}
+  .header-glass{grid-template-columns:minmax(132px,145px) minmax(218px,1fr) auto!important;gap:2px!important;padding-inline:7px 5px!important}
+  .brand-mark{width:53px!important}
   .brand-lockup{gap:5px!important}
-  .brand-name{font-size:.91rem!important}
-  .brand-subtitle{font-size:.50rem!important;max-width:92px!important}
-  .header-nav{gap:3px!important}
-  .header-nav a{font-size:.57rem!important}
+  .brand-name{font-size:.88rem!important}
+  .brand-subtitle{font-size:.48rem!important;max-width:86px!important}
+  .header-nav{gap:2px!important}
+  .header-nav a{font-size:.54rem!important}
   .header-actions{gap:2px!important}
-  .header-actions .location-link{width:105px!important}
-  .header-actions .phone-link{width:120px!important}
-  .header-actions .meta-link{grid-template-columns:27px minmax(0,1fr)!important;gap:4px!important;padding-inline:2px!important}
-  .header-actions .meta-icon{width:27px!important;height:27px!important}
-  .header-actions .meta-icon svg{width:16px!important;height:16px!important}
-  .header-actions .meta-copy strong{font-size:.57rem!important}
-  .header-actions .meta-copy small{font-size:.46rem!important}
-  .header-actions .social-link{width:28px!important;height:28px!important}
-  .header-actions .social-svg--vk,.header-actions .social-svg--max{width:18px!important;height:18px!important}
-  .header-actions .btn-appointment{min-width:104px!important;min-height:42px!important;padding-inline:7px!important;font-size:.53rem!important}
+
+  .header-actions .meta-link{grid-template-columns:26px minmax(0,1fr)!important;gap:3px!important;padding-inline:2px!important;min-height:40px!important}
+  .header-actions .meta-icon{width:26px!important;height:26px!important}
+  .header-actions .meta-icon svg{width:15px!important;height:15px!important}
+  .header-actions .meta-copy strong{font-size:.53rem!important}
+  .header-actions .meta-copy small{font-size:.43rem!important}
+
+  .header-actions .location-link{width:96px!important;min-width:96px!important;flex-basis:96px!important}
+  .header-actions .phone-link{width:132px!important;min-width:132px!important;flex-basis:132px!important}
+  .header-actions .phone-link .meta-copy strong{font-size:.52rem!important}
+
+  .header-actions .social-group{width:56px!important;min-width:56px!important;flex-basis:56px!important;gap:2px!important}
+  .header-actions .social-link{width:27px!important;height:27px!important;flex-basis:27px!important}
+  .header-actions .social-svg--vk,.header-actions .social-svg--max{width:17px!important;height:17px!important}
+
+  .header-actions .btn-appointment{width:98px!important;min-width:98px!important;flex-basis:98px!important;min-height:40px!important;padding-inline:5px!important;font-size:.49rem!important}
 }
