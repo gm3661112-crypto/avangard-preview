@@ -12,43 +12,16 @@
       }
     });
   }
-  // CTA glass highlight — subtle JS fallback for touch browsers.
-  // It adds only a broad, low-contrast reflection; no visible "beam".
+  // CTA highlight layer — CSS drives the optical motion.
+  // JS only inserts the layer, so the animation remains reliable on touch browsers.
   const ctaButtons = [...document.querySelectorAll('.btn-appointment')];
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (ctaButtons.length && !reduceMotion.matches) {
-    ctaButtons.forEach(btn => {
-      if (btn.querySelector('.btn-glass-shine')) return;
-      const shine = document.createElement('span');
-      shine.className = 'btn-glass-shine';
-      shine.setAttribute('aria-hidden', 'true');
-      Object.assign(shine.style, {
-        position:'absolute', zIndex:'3', top:'-40%', bottom:'-40%', left:'-18%', width:'58%',
-        borderRadius:'999px', pointerEvents:'none',
-        background:'linear-gradient(105deg,transparent 0%,rgba(255,255,255,.035) 35%,rgba(255,255,255,.12) 50%,rgba(255,255,255,.035) 65%,transparent 100%)',
-        filter:'blur(12px)', opacity:'0', transform:'translate3d(-20%,0,0)',
-        willChange:'transform,opacity'
-      });
-      btn.appendChild(shine);
-    });
-    const started = performance.now();
-    const animateCta = now => {
-      const cycle = 6200;
-      const p = ((now - started) % cycle) / cycle;
-      const q = (p < .62) ? p / .62 : 1;
-      const x = -20 + q * 75;
-      const opacity = p > .10 && p < .62 ? Math.sin((p-.10)/.52*Math.PI) * .12 : 0;
-      ctaButtons.forEach(btn => {
-        const shine = btn.querySelector('.btn-glass-shine');
-        if (shine) {
-          shine.style.transform = `translate3d(${x}%,0,0)`;
-          shine.style.opacity = String(opacity);
-        }
-      });
-      requestAnimationFrame(animateCta);
-    };
-    requestAnimationFrame(animateCta);
-  }
+  ctaButtons.forEach(btn => {
+    if (btn.querySelector('.btn-glass-shine')) return;
+    const shine = document.createElement('span');
+    shine.className = 'btn-glass-shine';
+    shine.setAttribute('aria-hidden', 'true');
+    btn.appendChild(shine);
+  });
 
   const items = [...document.querySelectorAll('[data-reveal]')];
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
