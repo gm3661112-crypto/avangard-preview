@@ -1,29 +1,86 @@
-/* Alpha 0.11 — liquid/frosted CTA with visible idle animation on Android/mobile. */
-.btn-appointment{overflow:hidden;border:1px solid rgba(255,255,255,.58);background:radial-gradient(120% 140% at 16% -20%,rgba(255,255,255,.38),transparent 35%),linear-gradient(118deg,rgba(255,255,255,.10) 0 18%,transparent 36% 62%,rgba(255,255,255,.07) 78%,transparent 100%),linear-gradient(145deg,rgba(240,64,71,.79),rgba(204,14,22,.82) 52%,rgba(166,2,11,.81));color:#fff;text-shadow:0 1px 1px rgba(92,0,6,.13);box-shadow:0 10px 28px rgba(185,13,21,.15),inset 0 1px 0 rgba(255,255,255,.74),inset 0 -1px 0 rgba(102,0,6,.10),inset 14px 0 30px rgba(255,255,255,.055),inset -12px -8px 24px rgba(92,0,6,.06);-webkit-backdrop-filter:blur(24px) saturate(148%);backdrop-filter:blur(24px) saturate(148%);transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .42s ease,border-color .42s ease}
-.btn-appointment::before{content:"";position:absolute;z-index:0;left:-34%;right:-34%;top:-52%;bottom:-52%;width:auto;height:auto;aspect-ratio:auto;border-radius:40%;pointer-events:none;opacity:.90;background:radial-gradient(ellipse at 16% 26%,rgba(255,255,255,.68) 0 6%,rgba(255,255,255,.25) 14%,transparent 31%),radial-gradient(ellipse at 52% 66%,rgba(255,249,249,.40) 0 8%,rgba(255,255,255,.16) 18%,transparent 37%),radial-gradient(ellipse at 84% 24%,rgba(255,255,255,.34) 0 5%,rgba(255,255,255,.10) 14%,transparent 29%),linear-gradient(116deg,transparent 24%,rgba(255,255,255,.21) 41%,rgba(255,255,255,.06) 54%,transparent 70%);background-size:128% 128%,122% 122%,114% 114%,170% 100%;filter:blur(6px);transform:translate3d(-5%,-2%,0) rotate(-4deg) scale(1.02);will-change:transform,background-position,opacity;animation:glass-caustics 6.4s cubic-bezier(.45,.05,.55,.95) infinite alternate}
-.btn-appointment::after{content:"";position:absolute;z-index:1;top:-44%;bottom:-44%;left:-48%;width:30%;height:auto;border-radius:46%;pointer-events:none;opacity:.12;background:linear-gradient(104deg,transparent,rgba(255,255,255,.12) 18%,rgba(255,255,255,.76) 48%,rgba(255,255,255,.18) 70%,transparent);box-shadow:none;filter:blur(2px);transform:skewX(-14deg);will-change:left,opacity;animation:glass-soft-sweep 5.6s ease-in-out infinite}
-.btn-appointment .btn-label{position:relative;z-index:2}.btn-appointment:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.74);box-shadow:0 15px 34px rgba(185,13,21,.19),0 4px 18px rgba(255,255,255,.12),inset 0 1px 0 rgba(255,255,255,.82),inset 0 -1px 0 rgba(102,0,6,.09)}.btn-appointment:hover::before{opacity:.98;filter:blur(5px) brightness(1.07);animation-duration:5.2s}.btn-appointment:hover::after{opacity:.34;animation-duration:4.4s}.btn-appointment:active{transform:translateY(0) scale(.99)}
-@keyframes glass-caustics{0%{transform:translate3d(-7%,-3%,0) rotate(-4deg) scale(1.01);background-position:0% 10%,8% 92%,92% 8%,0% 0%}46%{transform:translate3d(0%,3%,0) rotate(.5deg) scale(1.06);background-position:28% 20%,52% 60%,76% 28%,48% 0%}100%{transform:translate3d(8%,-1%,0) rotate(3deg) scale(1.025);background-position:52% 4%,88% 30%,58% 44%,100% 0%}}
-@keyframes glass-soft-sweep{0%,34%{left:-48%;opacity:.08}46%{opacity:.18}63%{left:118%;opacity:.30}72%,100%{left:118%;opacity:.08}}
-@media (hover:none), (pointer:coarse){.btn-appointment{background:linear-gradient(108deg,transparent 0 29%,rgba(255,255,255,.10) 37%,rgba(255,255,255,.46) 47%,rgba(255,255,255,.13) 56%,transparent 66%) 145% 0/245% 100% no-repeat,radial-gradient(125% 145% at 18% -18%,rgba(255,255,255,.42),transparent 35%),linear-gradient(145deg,rgba(240,64,71,.81),rgba(204,14,22,.84) 52%,rgba(166,2,11,.83));animation:mobile-glass-live 4.6s ease-in-out infinite}.btn-appointment::before{opacity:1;filter:blur(5px);animation:glass-caustics-mobile 5.2s ease-in-out infinite alternate}.btn-appointment::after{display:block;opacity:.13;animation:glass-soft-sweep-mobile 4.9s ease-in-out infinite}}
-@keyframes mobile-glass-live{0%,12%,100%{background-position:145% 0,0 0,0 0;box-shadow:0 9px 24px rgba(185,13,21,.14),inset 0 1px 0 rgba(255,255,255,.67),inset 12px 0 26px rgba(255,255,255,.05)}48%{background-position:30% 0,0 0,0 0;box-shadow:0 12px 29px rgba(185,13,21,.18),inset 0 1px 0 rgba(255,255,255,.84),inset 19px 0 35px rgba(255,255,255,.10)}70%{background-position:-55% 0,0 0,0 0;box-shadow:0 14px 31px rgba(185,13,21,.20),inset 0 1px 0 rgba(255,255,255,.78),inset -11px 0 29px rgba(255,255,255,.08)}}
-@keyframes glass-caustics-mobile{0%{transform:translate3d(-9%,-4%,0) rotate(-5deg) scale(1.02);background-position:0% 12%,4% 94%,94% 6%,0% 0%;opacity:.86}50%{transform:translate3d(1%,4%,0) rotate(1deg) scale(1.075);background-position:35% 18%,56% 58%,72% 30%,54% 0%;opacity:1}100%{transform:translate3d(10%,-2%,0) rotate(4deg) scale(1.03);background-position:64% 2%,94% 26%,52% 48%,100% 0%;opacity:.90}}
-@keyframes glass-soft-sweep-mobile{0%,30%{left:-48%;opacity:.08}43%{opacity:.20}62%{left:118%;opacity:.34}70%,100%{left:118%;opacity:.08}}
-@media(prefers-reduced-motion:reduce){.btn-appointment,.btn-appointment::before,.btn-appointment::after{animation:none}.btn-appointment::after{display:none}}
-
-/* Alpha 0.12: visible idle glass motion on touch, with no animated border. */
-@media (any-pointer:coarse),(hover:none){
-  .btn-appointment::before{animation:glass-idle-cloud-touch 4.2s ease-in-out infinite!important;opacity:.82!important}
-  .btn-appointment::after{animation:glass-idle-sheen-touch 4.8s ease-in-out infinite!important;opacity:.26!important}
+/* Alpha 0.17 — clean liquid-glass appointment CTA.
+   One stable animation layer: a bright optical sheen travels across the red glass.
+   No orbiting border, no competing background-position animations. */
+.btn-appointment{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  min-width:168px!important;
+  min-height:50px!important;
+  border:1px solid rgba(255,255,255,.62)!important;
+  border-radius:15px!important;
+  background:
+    radial-gradient(120% 170% at 18% -25%,rgba(255,255,255,.42),transparent 38%),
+    radial-gradient(90% 120% at 100% 115%,rgba(115,0,8,.22),transparent 58%),
+    linear-gradient(135deg,rgba(239,53,61,.96),rgba(210,19,28,.94) 52%,rgba(181,7,16,.96))!important;
+  color:#fff!important;
+  text-shadow:0 1px 2px rgba(83,0,5,.18)!important;
+  box-shadow:
+    0 12px 30px rgba(185,13,21,.22),
+    inset 0 1px 0 rgba(255,255,255,.72),
+    inset 0 -1px 0 rgba(103,0,7,.16),
+    inset 10px 0 28px rgba(255,255,255,.06)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(150%)!important;
+  backdrop-filter:blur(18px) saturate(150%)!important;
+  transform:translateZ(0)!important;
+  backface-visibility:hidden!important;
+  -webkit-font-smoothing:antialiased;
+  transition:transform .24s ease,box-shadow .24s ease,filter .24s ease!important;
 }
-@keyframes glass-idle-cloud-touch{
-  0%{transform:translate3d(-12%,-3%,0) scale(1.02);opacity:.58}
-  50%{transform:translate3d(3%,4%,0) scale(1.10);opacity:.92}
-  100%{transform:translate3d(12%,-1%,0) scale(1.04);opacity:.66}
+.btn-appointment::before{
+  content:""!important;
+  position:absolute!important;
+  z-index:0!important;
+  top:-45%!important;
+  bottom:-45%!important;
+  left:-55%!important;
+  width:34%!important;
+  border-radius:999px!important;
+  pointer-events:none!important;
+  background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.06) 18%,rgba(255,255,255,.88) 50%,rgba(255,255,255,.14) 76%,transparent 100%)!important;
+  filter:blur(5px)!important;
+  opacity:.72!important;
+  transform:translate3d(-20%,0,0) skewX(-16deg)!important;
+  will-change:transform,opacity!important;
+  animation:cta-glass-sheen 4.2s cubic-bezier(.42,0,.58,1) infinite!important;
 }
-@keyframes glass-idle-sheen-touch{
-  0%,25%{left:-52%;opacity:.04}
-  48%{left:12%;opacity:.20}
-  64%{left:118%;opacity:.34}
-  100%{left:118%;opacity:.05}
+.btn-appointment::after{
+  content:""!important;
+  position:absolute!important;
+  z-index:1!important;
+  inset:1px!important;
+  border-radius:14px!important;
+  pointer-events:none!important;
+  background:
+    radial-gradient(70% 100% at 20% 0%,rgba(255,255,255,.24),transparent 52%),
+    linear-gradient(180deg,rgba(255,255,255,.08),transparent 46%,rgba(90,0,6,.08))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.34)!important;
+  opacity:1!important;
+}
+.btn-appointment .btn-label{
+  position:relative!important;
+  z-index:2!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  white-space:nowrap!important;
+}
+.btn-appointment:hover{
+  transform:translateY(-2px)!important;
+  filter:saturate(1.05) brightness(1.03)!important;
+  box-shadow:
+    0 17px 38px rgba(185,13,21,.28),
+    inset 0 1px 0 rgba(255,255,255,.82),
+    inset 10px 0 30px rgba(255,255,255,.08)!important;
+}
+.btn-appointment:active{transform:translateY(0) scale(.985)!important}
+@keyframes cta-glass-sheen{
+  0%,18%{transform:translate3d(-190%,0,0) skewX(-16deg);opacity:0}
+  28%{opacity:.55}
+  48%{opacity:.88}
+  64%{transform:translate3d(430%,0,0) skewX(-16deg);opacity:.30}
+  65%,100%{transform:translate3d(430%,0,0) skewX(-16deg);opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .btn-appointment::before{animation:none!important;opacity:.18!important}
 }
