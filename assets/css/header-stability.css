@@ -1,0 +1,28 @@
+/* Alpha 0.8 — slightly larger brand mark and deterministic Android desktop-mode header. */
+.brand-mark{width:66px!important}
+@media (min-width:1320px) and (max-width:1459px){.brand-mark{width:61px!important}}
+@media (min-width:1051px) and (max-width:1319px){.brand-mark{width:60px!important}}
+@media (min-width:901px) and (max-width:1050px){.brand-mark{width:60px!important}}
+@media (max-width:900px){.brand-mark{width:59px!important}}
+@media (max-width:620px){.brand-mark{width:54px!important}}
+@media (max-width:390px){.brand-mark{width:51px!important}}
+@media (max-width:350px){.brand-mark{width:48px!important}}
+
+/* Android browsers use different virtual viewport widths for “Desktop site”.
+   Touch-first hardware always gets one compact desktop header state. */
+@media (any-pointer:coarse) and (min-width:901px){
+  .header-glass{width:min(calc(100% - 28px),var(--container))!important;grid-template-columns:minmax(245px,1fr) auto auto!important;grid-template-rows:1fr!important;align-items:center!important;gap:10px!important;min-height:82px!important;padding:8px 10px 8px 14px!important}
+  .brand-lockup{grid-column:1!important;grid-row:1!important;position:relative!important;z-index:122!important}
+  .brand-mark{width:62px!important}
+  .brand-name{font-size:1.14rem!important}
+  .brand-subtitle{font-size:.67rem!important;max-width:190px!important}
+  .header-nav{display:none!important}
+  .header-actions{display:flex!important;grid-column:2!important;grid-row:1!important;justify-content:flex-end!important;padding:0!important;border:0!important}
+  .header-actions .location-link,.header-actions .phone-link,.header-actions .social-group{display:none!important}
+  .header-actions .btn-appointment{display:inline-flex!important;min-width:154px!important;min-height:50px!important;padding-inline:15px!important;font-size:.73rem!important}
+  .compact-header-actions{display:flex!important;grid-column:3!important;grid-row:1!important;position:relative!important;z-index:123!important}
+  .compact-appointment{display:none!important}
+  .mobile-menu[open]::before{top:calc(env(safe-area-inset-top) + 92px)!important;z-index:109!important}
+  .mobile-menu[open]>summary{z-index:124!important}
+  .mobile-menu-panel{top:calc(env(safe-area-inset-top) + 102px)!important;z-index:120!important;max-height:calc(100dvh - 116px - env(safe-area-inset-bottom))!important}
+}
