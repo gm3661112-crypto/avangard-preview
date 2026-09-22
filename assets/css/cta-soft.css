@@ -84,3 +84,31 @@
 @media(prefers-reduced-motion:reduce){
   .btn-appointment::before{animation:none!important;opacity:.18!important}
 }
+
+/* Alpha 0.18 — restore a clearly visible, uninterrupted liquid-glass sheen. */
+.btn-appointment{
+  background:
+    radial-gradient(130% 180% at 15% -25%,rgba(255,255,255,.46),transparent 36%),
+    radial-gradient(90% 130% at 100% 115%,rgba(110,0,8,.24),transparent 58%),
+    linear-gradient(135deg,#ef3f47 0%,#d51b25 52%,#b90712 100%)!important;
+  box-shadow:0 12px 30px rgba(185,13,21,.22),inset 0 1px 0 rgba(255,255,255,.78),inset 0 -1px 0 rgba(103,0,7,.16),inset 10px 0 30px rgba(255,255,255,.08)!important;
+}
+.btn-appointment::before{
+  left:-70%!important;width:42%!important;
+  background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.10) 18%,rgba(255,255,255,.95) 48%,rgba(255,255,255,.22) 70%,transparent 100%)!important;
+  filter:blur(4px)!important;opacity:.88!important;
+  animation:cta-glass-sheen-visible 3.8s ease-in-out infinite!important;
+}
+@keyframes cta-glass-sheen-visible{
+  0%,12%{transform:translate3d(-15%,0,0) skewX(-16deg);opacity:0}
+  25%{opacity:.72}
+  42%{transform:translate3d(270%,0,0) skewX(-16deg);opacity:.95}
+  58%{transform:translate3d(430%,0,0) skewX(-16deg);opacity:.25}
+  59%,100%{transform:translate3d(430%,0,0) skewX(-16deg);opacity:0}
+}
+.btn-appointment::after{
+  background:
+    radial-gradient(75% 110% at 18% 0%,rgba(255,255,255,.28),transparent 54%),
+    linear-gradient(180deg,rgba(255,255,255,.10),transparent 46%,rgba(90,0,6,.08))!important;
+}
+@media(prefers-reduced-motion:reduce){.btn-appointment::before{animation:none!important;opacity:.25!important}}
