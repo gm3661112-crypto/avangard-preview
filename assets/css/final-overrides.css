@@ -674,3 +674,18 @@ body{font-size:var(--type-body);line-height:var(--lh-body);color:var(--ink)}
   .mobile-contact-card:nth-child(1),
   .mobile-contact-card:nth-child(2){display:grid!important}
 }
+
+
+/* Brand subtitle refinement */
+.brand-subtitle{
+  font-size:.74rem!important;
+  font-weight:650!important;
+  letter-spacing:-.01em!important;
+  line-height:1.2!important;
+}
+@media (min-width:901px){
+  .brand-subtitle--desktop{font-size:.74rem!important;font-weight:650!important}
+}
+@media (max-width:900px){
+  .brand-subtitle--mobile{font-size:.69rem!important;font-weight:650!important}
+}
