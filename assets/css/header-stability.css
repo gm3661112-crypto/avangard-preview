@@ -151,3 +151,55 @@
   .header-actions .social-link{width:24px!important;height:24px!important;flex-basis:24px!important}
   .header-actions .btn-appointment{width:110px!important;min-width:110px!important;flex-basis:110px!important}
 }
+
+/* Alpha 0.13 — breathe: balanced Android desktop header + no hero overflow. */
+html,body{max-width:100%;overflow-x:clip}
+@media (any-pointer:coarse) and (min-width:901px){
+  .header-glass{
+    width:calc(100% - 28px)!important;
+    grid-template-columns:120px minmax(250px,1fr) auto!important;
+    gap:8px!important;
+    min-height:78px!important;
+    padding:7px 9px!important;
+  }
+  .brand-lockup{gap:7px!important}
+  .brand-mark{width:54px!important}
+  .brand-name{font-size:.86rem!important}
+  .brand-subtitle{font-size:.46rem!important;max-width:92px!important}
+  .header-nav{gap:clamp(7px,1vw,14px)!important;justify-content:center!important;overflow:visible!important}
+  .header-nav a{font-size:clamp(.52rem,.62vw,.68rem)!important;padding:8px 0!important}
+  .header-actions{gap:6px!important;min-width:0!important}
+  .header-actions .location-link{width:82px!important;min-width:82px!important;flex-basis:82px!important}
+  .header-actions .phone-link{width:124px!important;min-width:124px!important;flex-basis:124px!important}
+  .header-actions .meta-link{grid-template-columns:24px minmax(0,1fr)!important;gap:4px!important;padding:2px!important;min-height:38px!important}
+  .header-actions .meta-icon{width:24px!important;height:24px!important;border-radius:9px!important}
+  .header-actions .meta-icon svg{width:15px!important;height:15px!important}
+  .header-actions .meta-copy strong{font-size:.53rem!important}
+  .header-actions .meta-copy small{font-size:.41rem!important}
+  .header-actions .social-group{width:62px!important;min-width:62px!important;flex-basis:62px!important;gap:6px!important}
+  .header-actions .social-link{width:28px!important;height:28px!important;flex-basis:28px!important;border-radius:10px!important}
+  .header-actions .social-svg--vk,.header-actions .social-svg--max{width:18px!important;height:18px!important}
+  .header-actions .btn-appointment{width:108px!important;min-width:108px!important;flex-basis:108px!important;min-height:40px!important;padding-inline:5px!important;font-size:.48rem!important}
+}
+@media (any-pointer:coarse) and (min-width:901px) and (max-width:1020px){
+  .header-glass{grid-template-columns:116px minmax(250px,1fr) auto!important;gap:7px!important}
+  .brand-mark{width:51px!important}.brand-name{font-size:.82rem!important}.brand-subtitle{font-size:.43rem!important;max-width:86px!important}
+  .header-nav{gap:6px!important}.header-nav a{font-size:.50rem!important}
+  .header-actions{gap:5px!important}
+  .header-actions .location-link{width:78px!important;min-width:78px!important;flex-basis:78px!important}
+  .header-actions .phone-link{width:120px!important;min-width:120px!important;flex-basis:120px!important}
+  .header-actions .social-group{width:58px!important;min-width:58px!important;flex-basis:58px!important;gap:5px!important}
+  .header-actions .social-link{width:26px!important;height:26px!important;flex-basis:26px!important}
+  .header-actions .btn-appointment{width:104px!important;min-width:104px!important;flex-basis:104px!important}
+}
+@media (any-pointer:coarse) and (min-width:901px) and (max-width:1100px){
+  .shell{width:calc(100% - 40px)!important}
+  .hero{padding-top:22px!important}
+  .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;min-height:520px!important;gap:20px!important}
+  .hero-copy{padding:34px 18px 34px 0!important}
+  .hero-copy .display{font-size:clamp(2.6rem,5.2vw,4.25rem)!important;max-width:620px!important;margin:20px 0!important}
+  .hero-copy .lead{font-size:.92rem!important;max-width:520px!important}
+  .hero-media{min-height:520px!important}
+  .hero-photo img{min-height:520px!important}
+  .hero-side{padding:28px 16px!important}
+}
