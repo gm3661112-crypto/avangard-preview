@@ -111,3 +111,13 @@
     animation:none!important;
   }
 }
+
+
+/* CTA motion is owned by cta-motion.js (Web Animations API).
+   Keep CSS animation layers disabled so later visual updates cannot fight the motion engine. */
+.btn-appointment,
+.btn-appointment::before,
+.btn-appointment::after,
+.btn-appointment .btn-glass-shine{
+  animation:none!important;
+}
