@@ -12,7 +12,8 @@
       }
     });
   }
-  // CTA glass highlight — JS fallback for mobile browsers that do not animate CSS layers reliably.
+  // CTA glass highlight — subtle JS fallback for touch browsers.
+  // It adds only a broad, low-contrast reflection; no visible "beam".
   const ctaButtons = [...document.querySelectorAll('.btn-appointment')];
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   if (ctaButtons.length && !reduceMotion.matches) {
@@ -22,37 +23,26 @@
       shine.className = 'btn-glass-shine';
       shine.setAttribute('aria-hidden', 'true');
       Object.assign(shine.style, {
-        position: 'absolute',
-        zIndex: '3',
-        top: '-55%',
-        bottom: '-55%',
-        left: '-28%',
-        width: '24%',
-        borderRadius: '999px',
-        pointerEvents: 'none',
-        background: 'linear-gradient(105deg, transparent 0%, rgba(255,255,255,.10) 18%, rgba(255,255,255,.98) 50%, rgba(255,255,255,.18) 78%, transparent 100%)',
-        filter: 'blur(4px)',
-        opacity: '0',
-        transform: 'translate3d(-180%,0,0) skewX(-16deg)',
-        willChange: 'transform,opacity'
+        position:'absolute', zIndex:'3', top:'-40%', bottom:'-40%', left:'-18%', width:'58%',
+        borderRadius:'999px', pointerEvents:'none',
+        background:'linear-gradient(105deg,transparent 0%,rgba(255,255,255,.035) 35%,rgba(255,255,255,.12) 50%,rgba(255,255,255,.035) 65%,transparent 100%)',
+        filter:'blur(12px)', opacity:'0', transform:'translate3d(-20%,0,0)',
+        willChange:'transform,opacity'
       });
       btn.appendChild(shine);
     });
     const started = performance.now();
     const animateCta = now => {
-      const cycle = 3600;
+      const cycle = 6200;
       const p = ((now - started) % cycle) / cycle;
-      let x = -180, opacity = 0;
-      if (p > .20 && p < .60) {
-        const q = (p - .20) / .40;
-        x = -180 + q * 610;
-        opacity = q < .55 ? q / .55 * .82 : (1 - (q - .55) / .45) * .82;
-      }
+      const q = (p < .62) ? p / .62 : 1;
+      const x = -20 + q * 75;
+      const opacity = p > .10 && p < .62 ? Math.sin((p-.10)/.52*Math.PI) * .12 : 0;
       ctaButtons.forEach(btn => {
         const shine = btn.querySelector('.btn-glass-shine');
         if (shine) {
-          shine.style.transform = `translate3d(${x}%,0,0) skewX(-16deg)`;
-          shine.style.opacity = String(Math.max(0, opacity));
+          shine.style.transform = `translate3d(${x}%,0,0)`;
+          shine.style.opacity = String(opacity);
         }
       });
       requestAnimationFrame(animateCta);
