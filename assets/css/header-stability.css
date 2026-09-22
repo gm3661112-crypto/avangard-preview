@@ -1,4 +1,4 @@
-/* Alpha 0.9 — larger brand mark + stable Android desktop mode with visible primary navigation. */
+/* Alpha 0.10 — larger brand mark + Android "Desktop site" mirrors desktop header content. */
 .brand-mark{width:66px!important}
 @media (min-width:1320px) and (max-width:1459px){.brand-mark{width:61px!important}}
 @media (min-width:1051px) and (max-width:1319px){.brand-mark{width:60px!important}}
@@ -8,23 +8,24 @@
 @media (max-width:390px){.brand-mark{width:51px!important}}
 @media (max-width:350px){.brand-mark{width:48px!important}}
 
-/* Android browsers choose different virtual widths for “Desktop site”.
-   On touch-first hardware above the mobile breakpoint, keep the main navigation visible.
-   Address/phone/socials stay in the burger so the header remains one stable row. */
+/* Android browsers expose different virtual widths when "Desktop site" is enabled.
+   On touch-first hardware above the mobile breakpoint we keep the SAME content as desktop:
+   primary nav + address + phone + socials + appointment. No burger. */
 @media (any-pointer:coarse) and (min-width:901px){
   .header-glass{
-    width:min(calc(100% - 24px),1640px)!important;
-    grid-template-columns:minmax(196px,220px) minmax(0,1fr) auto auto!important;
+    width:min(calc(100% - 20px),1640px)!important;
+    grid-template-columns:minmax(148px,176px) minmax(250px,1fr) auto!important;
     grid-template-rows:1fr!important;
     align-items:center!important;
-    gap:7px!important;
+    gap:5px!important;
     min-height:82px!important;
-    padding:8px 9px 8px 13px!important;
+    padding:7px 8px 7px 11px!important;
   }
-  .brand-lockup{grid-column:1!important;grid-row:1!important;position:relative!important;z-index:122!important;gap:9px!important}
-  .brand-mark{width:60px!important}
-  .brand-name{font-size:1.06rem!important}
-  .brand-subtitle{font-size:.62rem!important;line-height:1.18!important;max-width:150px!important}
+  .brand-lockup{grid-column:1!important;grid-row:1!important;gap:7px!important;padding:0!important;position:relative!important;z-index:2!important}
+  .brand-mark{width:58px!important}
+  .brand-name{font-size:1rem!important;letter-spacing:.018em!important}
+  .brand-subtitle{display:block!important;font-size:.56rem!important;line-height:1.15!important;max-width:112px!important}
+  .brand-subtitle--mobile{display:none!important}
 
   .header-nav{
     display:flex!important;
@@ -32,58 +33,83 @@
     grid-row:1!important;
     min-width:0!important;
     justify-content:center!important;
-    gap:clamp(7px,.72vw,13px)!important;
-    padding:0 2px!important;
+    gap:clamp(4px,.52vw,9px)!important;
+    padding:0 1px!important;
   }
-  .header-nav a{font-size:clamp(.69rem,.76vw,.80rem)!important;padding:10px 0!important;white-space:nowrap!important}
+  .header-nav a{font-size:clamp(.61rem,.66vw,.73rem)!important;padding:9px 0!important;white-space:nowrap!important;font-weight:650!important}
 
   .header-actions{
     display:flex!important;
     grid-column:3!important;
     grid-row:1!important;
+    min-width:0!important;
+    align-items:center!important;
     justify-content:flex-end!important;
-    gap:0!important;
+    gap:3px!important;
     padding:0!important;
     border:0!important;
   }
-  .header-actions .location-link,.header-actions .phone-link,.header-actions .social-group{display:none!important}
+  .header-actions .location-link,
+  .header-actions .phone-link,
+  .header-actions .social-group,
+  .header-actions .btn-appointment{display:flex!important}
+
+  .header-actions .meta-link{
+    display:grid!important;
+    grid-template-columns:30px minmax(0,1fr)!important;
+    gap:5px!important;
+    min-height:44px!important;
+    padding:3px 4px!important;
+    border-radius:12px!important;
+  }
+  .header-actions .meta-icon{width:30px!important;height:30px!important;border-radius:10px!important}
+  .header-actions .meta-icon svg{width:18px!important;height:18px!important}
+  .header-actions .meta-copy{gap:1px!important}
+  .header-actions .meta-copy strong{font-size:.62rem!important;line-height:1.12!important}
+  .header-actions .meta-copy small{font-size:.50rem!important;line-height:1.12!important;white-space:normal!important;overflow:visible!important}
+  .header-actions .location-link{width:116px!important}
+  .header-actions .location-link .meta-copy small{max-width:76px!important}
+  .header-actions .phone-link{width:128px!important}
+  .header-actions .phone-link .meta-copy strong{font-size:.62rem!important;white-space:nowrap!important}
+
+  .header-actions .social-group{flex:0 0 auto!important;gap:3px!important;padding:0!important}
+  .header-actions .social-link{width:31px!important;height:31px!important;border-radius:10px!important}
+  .header-actions .social-svg--vk,.header-actions .social-svg--max{width:20px!important;height:20px!important}
+
   .header-actions .btn-appointment{
-    display:inline-flex!important;
-    min-width:142px!important;
-    min-height:48px!important;
-    padding-inline:12px!important;
-    font-size:.68rem!important;
+    flex:0 0 auto!important;
+    min-width:116px!important;
+    min-height:44px!important;
+    padding-inline:9px!important;
+    font-size:.58rem!important;
+    letter-spacing:.025em!important;
   }
+  .header-actions .btn-label{white-space:nowrap!important}
 
-  .compact-header-actions{
-    display:flex!important;
-    grid-column:4!important;
-    grid-row:1!important;
-    position:relative!important;
-    z-index:123!important;
-    gap:0!important;
-  }
-  .compact-appointment{display:none!important}
-  .mobile-menu>summary{width:42px!important;height:42px!important;border-radius:13px!important}
-
-  .mobile-menu[open]::before{top:calc(env(safe-area-inset-top) + 92px)!important;z-index:109!important}
-  .mobile-menu[open]>summary{z-index:124!important}
-  .mobile-menu-panel{
-    top:calc(env(safe-area-inset-top) + 102px)!important;
-    z-index:120!important;
-    max-height:calc(100dvh - 116px - env(safe-area-inset-bottom))!important;
-  }
+  /* Desktop mode must not expose the mobile control at all. */
+  .compact-header-actions{display:none!important}
+  .header-contact-strip{display:none!important}
 }
 
-/* Very narrow Android desktop-mode viewports still keep navigation visible;
-   the CTA yields space before the nav ever disappears. */
+/* Tightest Android desktop-mode virtual viewports (~900–1020 CSS px).
+   Keep every desktop header item, only reduce chrome around them. */
 @media (any-pointer:coarse) and (min-width:901px) and (max-width:1020px){
-  .header-glass{grid-template-columns:minmax(184px,205px) minmax(0,1fr) auto!important}
-  .header-actions{display:none!important}
-  .compact-header-actions{grid-column:3!important}
-  .brand-mark{width:58px!important}
-  .brand-name{font-size:1rem!important}
-  .brand-subtitle{font-size:.59rem!important;max-width:138px!important}
-  .header-nav{gap:6px!important}
-  .header-nav a{font-size:.66rem!important}
+  .header-glass{grid-template-columns:minmax(137px,150px) minmax(238px,1fr) auto!important;gap:3px!important;padding-inline:8px 6px!important}
+  .brand-mark{width:54px!important}
+  .brand-lockup{gap:5px!important}
+  .brand-name{font-size:.91rem!important}
+  .brand-subtitle{font-size:.50rem!important;max-width:92px!important}
+  .header-nav{gap:3px!important}
+  .header-nav a{font-size:.57rem!important}
+  .header-actions{gap:2px!important}
+  .header-actions .location-link{width:105px!important}
+  .header-actions .phone-link{width:120px!important}
+  .header-actions .meta-link{grid-template-columns:27px minmax(0,1fr)!important;gap:4px!important;padding-inline:2px!important}
+  .header-actions .meta-icon{width:27px!important;height:27px!important}
+  .header-actions .meta-icon svg{width:16px!important;height:16px!important}
+  .header-actions .meta-copy strong{font-size:.57rem!important}
+  .header-actions .meta-copy small{font-size:.46rem!important}
+  .header-actions .social-link{width:28px!important;height:28px!important}
+  .header-actions .social-svg--vk,.header-actions .social-svg--max{width:18px!important;height:18px!important}
+  .header-actions .btn-appointment{min-width:104px!important;min-height:42px!important;padding-inline:7px!important;font-size:.53rem!important}
 }
