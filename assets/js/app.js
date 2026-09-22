@@ -12,17 +12,6 @@
       }
     });
   }
-  // CTA highlight layer — CSS drives the optical motion.
-  // JS only inserts the layer, so the animation remains reliable on touch browsers.
-  const ctaButtons = [...document.querySelectorAll('.btn-appointment')];
-  ctaButtons.forEach(btn => {
-    if (btn.querySelector('.btn-glass-shine')) return;
-    const shine = document.createElement('span');
-    shine.className = 'btn-glass-shine';
-    shine.setAttribute('aria-hidden', 'true');
-    btn.appendChild(shine);
-  });
-
   const items = [...document.querySelectorAll('[data-reveal]')];
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     items.forEach(el => el.classList.add('before-reveal'));
