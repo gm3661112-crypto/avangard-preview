@@ -27,3 +27,69 @@
 @media (min-width:1101px) and (max-width:1459px){
 .header-glass{height:92px!important;min-height:92px!important}.brand-lockup{flex-basis:168px!important}.brand-mark{width:58px!important}.header-nav a{font-size:.78rem!important}.header-actions .location-link{width:175px!important;min-width:175px!important;flex-basis:175px!important}.header-actions .phone-link{width:176px!important;min-width:176px!important;flex-basis:176px!important}.header-actions .social-group{width:68px!important;min-width:68px!important;flex-basis:68px!important}.header-actions .social-link{width:32px!important;height:32px!important;flex-basis:32px!important}.header-actions .btn-appointment{width:165px!important;min-width:165px!important;flex-basis:165px!important}
 }
+/* Alpha 0.20: stable 901–1100px header. At this CSS width there is not enough physical space
+   for full contact cards + six nav items without shrinking text into visual artifacts.
+   Keep the primary navigation readable; move secondary contacts to the compact menu. */
+@media (min-width:901px) and (max-width:1100px){
+  .header-glass{
+    height:86px!important;
+    min-height:86px!important;
+    width:calc(100% - 24px)!important;
+    padding:8px 10px 8px 14px!important;
+    gap:10px!important;
+    overflow:hidden!important;
+  }
+  .brand-lockup{
+    flex:0 0 164px!important;
+    width:164px!important;
+    gap:8px!important;
+  }
+  .brand-mark{width:54px!important}
+  .brand-copy{gap:3px!important}
+  .brand-name{font-size:1.04rem!important;line-height:1!important}
+  .brand-subtitle{display:none!important}
+  .header-nav{
+    flex:1 1 auto!important;
+    min-width:0!important;
+    justify-content:flex-start!important;
+    gap:clamp(6px,.75vw,11px)!important;
+    overflow:hidden!important;
+  }
+  .header-nav a{
+    flex:0 0 auto!important;
+    font-size:clamp(.76rem,.82vw,.84rem)!important;
+    line-height:1.1!important;
+    padding:10px 0!important;
+    letter-spacing:-.012em!important;
+  }
+  .header-actions{
+    flex:0 0 140px!important;
+    width:140px!important;
+    min-width:140px!important;
+    justify-content:flex-end!important;
+    gap:0!important;
+  }
+  .header-actions .meta-link,
+  .header-actions .social-group{display:none!important}
+  .header-actions .btn-appointment{
+    display:inline-flex!important;
+    width:140px!important;
+    min-width:140px!important;
+    flex-basis:140px!important;
+    min-height:48px!important;
+    padding-inline:9px!important;
+    font-size:.64rem!important;
+    letter-spacing:.02em!important;
+  }
+  .compact-header-actions{display:none!important}
+}
+@media (min-width:901px) and (max-width:960px){
+  .header-glass{gap:7px!important;padding-left:10px!important}
+  .brand-lockup{flex-basis:150px!important;width:150px!important}
+  .brand-mark{width:50px!important}
+  .brand-name{font-size:1rem!important}
+  .header-nav{gap:6px!important}
+  .header-nav a{font-size:.74rem!important}
+  .header-actions{flex-basis:132px!important;width:132px!important;min-width:132px!important}
+  .header-actions .btn-appointment{width:132px!important;min-width:132px!important;flex-basis:132px!important;font-size:.60rem!important}
+}
