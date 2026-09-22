@@ -1,246 +1,31 @@
-/* Alpha 0.17 — clean liquid-glass appointment CTA.
-   One stable animation layer: a bright optical sheen travels across the red glass.
-   No orbiting border, no competing background-position animations. */
+/* AVANGARD — modern liquid-glass CTA
+   Very subtle optical motion: the button should feel alive, not animated. */
 .btn-appointment{
-  position:relative!important;
-  isolation:isolate!important;
-  overflow:hidden!important;
-  min-width:168px!important;
-  min-height:50px!important;
-  border:1px solid rgba(255,255,255,.62)!important;
-  border-radius:15px!important;
-  background:
-    radial-gradient(120% 170% at 18% -25%,rgba(255,255,255,.42),transparent 38%),
-    radial-gradient(90% 120% at 100% 115%,rgba(115,0,8,.22),transparent 58%),
-    linear-gradient(135deg,rgba(239,53,61,.96),rgba(210,19,28,.94) 52%,rgba(181,7,16,.96))!important;
-  color:#fff!important;
-  text-shadow:0 1px 2px rgba(83,0,5,.18)!important;
-  box-shadow:
-    0 12px 30px rgba(185,13,21,.22),
-    inset 0 1px 0 rgba(255,255,255,.72),
-    inset 0 -1px 0 rgba(103,0,7,.16),
-    inset 10px 0 28px rgba(255,255,255,.06)!important;
-  -webkit-backdrop-filter:blur(18px) saturate(150%)!important;
-  backdrop-filter:blur(18px) saturate(150%)!important;
-  transform:translateZ(0)!important;
-  backface-visibility:hidden!important;
-  -webkit-font-smoothing:antialiased;
-  transition:transform .24s ease,box-shadow .24s ease,filter .24s ease!important;
+  position:relative!important;isolation:isolate!important;overflow:hidden!important;
+  min-width:168px!important;min-height:50px!important;
+  border:1px solid rgba(255,255,255,.58)!important;border-radius:15px!important;
+  background:radial-gradient(120% 170% at 18% -20%,rgba(255,255,255,.34),transparent 42%),linear-gradient(135deg,#ed3b43 0%,#d51d27 54%,#bd0b15 100%)!important;
+  color:#fff!important;text-shadow:0 1px 2px rgba(83,0,5,.16)!important;
+  box-shadow:0 10px 28px rgba(185,13,21,.19),inset 0 1px 0 rgba(255,255,255,.66),inset 0 -1px 0 rgba(103,0,7,.12)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(145%)!important;backdrop-filter:blur(18px) saturate(145%)!important;
+  transform:translateZ(0)!important;backface-visibility:hidden!important;
+  transition:transform .24s ease,box-shadow .35s ease,filter .35s ease!important;
 }
 .btn-appointment::before{
-  content:""!important;
-  position:absolute!important;
-  z-index:0!important;
-  top:-45%!important;
-  bottom:-45%!important;
-  left:-55%!important;
-  width:34%!important;
-  border-radius:999px!important;
-  pointer-events:none!important;
-  background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.06) 18%,rgba(255,255,255,.88) 50%,rgba(255,255,255,.14) 76%,transparent 100%)!important;
-  filter:blur(5px)!important;
-  opacity:.72!important;
-  transform:translate3d(-20%,0,0) skewX(-16deg)!important;
-  will-change:transform,opacity!important;
-  animation:cta-glass-sheen 4.2s cubic-bezier(.42,0,.58,1) infinite!important;
+  content:""!important;position:absolute!important;z-index:0!important;inset:-25% -45%!important;pointer-events:none!important;
+  background:radial-gradient(55% 120% at 8% 10%,rgba(255,255,255,.20),transparent 58%),linear-gradient(105deg,transparent 35%,rgba(255,255,255,.13) 49%,transparent 63%)!important;
+  filter:blur(8px)!important;opacity:.72!important;transform:translate3d(0,0,0)!important;
+  animation:cta-liquid-drift 7.5s cubic-bezier(.45,0,.55,1) infinite!important;will-change:transform,opacity!important;
 }
 .btn-appointment::after{
-  content:""!important;
-  position:absolute!important;
-  z-index:1!important;
-  inset:1px!important;
-  border-radius:14px!important;
-  pointer-events:none!important;
-  background:
-    radial-gradient(70% 100% at 20% 0%,rgba(255,255,255,.24),transparent 52%),
-    linear-gradient(180deg,rgba(255,255,255,.08),transparent 46%,rgba(90,0,6,.08))!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.34)!important;
-  opacity:1!important;
+  content:""!important;position:absolute!important;z-index:1!important;inset:1px!important;border-radius:14px!important;pointer-events:none!important;
+  background:radial-gradient(80% 100% at 20% 0%,rgba(255,255,255,.16),transparent 56%),linear-gradient(180deg,rgba(255,255,255,.045),transparent 48%,rgba(80,0,5,.06))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28)!important;opacity:.9!important;
+  animation:cta-glass-breathe 6.5s ease-in-out infinite!important;will-change:opacity!important;
 }
-.btn-appointment .btn-label{
-  position:relative!important;
-  z-index:2!important;
-  display:inline-flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  white-space:nowrap!important;
-}
-.btn-appointment:hover{
-  transform:translateY(-2px)!important;
-  filter:saturate(1.05) brightness(1.03)!important;
-  box-shadow:
-    0 17px 38px rgba(185,13,21,.28),
-    inset 0 1px 0 rgba(255,255,255,.82),
-    inset 10px 0 30px rgba(255,255,255,.08)!important;
-}
+.btn-appointment .btn-label{position:relative!important;z-index:2!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important}
+.btn-appointment:hover{transform:translateY(-2px)!important;filter:saturate(1.04) brightness(1.025)!important;box-shadow:0 16px 34px rgba(185,13,21,.25),inset 0 1px 0 rgba(255,255,255,.76)!important}
 .btn-appointment:active{transform:translateY(0) scale(.985)!important}
-@keyframes cta-glass-sheen{
-  0%,18%{transform:translate3d(-190%,0,0) skewX(-16deg);opacity:0}
-  28%{opacity:.55}
-  48%{opacity:.88}
-  64%{transform:translate3d(430%,0,0) skewX(-16deg);opacity:.30}
-  65%,100%{transform:translate3d(430%,0,0) skewX(-16deg);opacity:0}
-}
-@media(prefers-reduced-motion:reduce){
-  .btn-appointment::before{animation:none!important;opacity:.18!important}
-}
-
-/* Alpha 0.18 — restore a clearly visible, uninterrupted liquid-glass sheen. */
-.btn-appointment{
-  background:
-    radial-gradient(130% 180% at 15% -25%,rgba(255,255,255,.46),transparent 36%),
-    radial-gradient(90% 130% at 100% 115%,rgba(110,0,8,.24),transparent 58%),
-    linear-gradient(135deg,#ef3f47 0%,#d51b25 52%,#b90712 100%)!important;
-  box-shadow:0 12px 30px rgba(185,13,21,.22),inset 0 1px 0 rgba(255,255,255,.78),inset 0 -1px 0 rgba(103,0,7,.16),inset 10px 0 30px rgba(255,255,255,.08)!important;
-}
-.btn-appointment::before{
-  left:-70%!important;width:42%!important;
-  background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.10) 18%,rgba(255,255,255,.95) 48%,rgba(255,255,255,.22) 70%,transparent 100%)!important;
-  filter:blur(4px)!important;opacity:.88!important;
-  animation:cta-glass-sheen-visible 3.8s ease-in-out infinite!important;
-}
-@keyframes cta-glass-sheen-visible{
-  0%,12%{transform:translate3d(-15%,0,0) skewX(-16deg);opacity:0}
-  25%{opacity:.72}
-  42%{transform:translate3d(270%,0,0) skewX(-16deg);opacity:.95}
-  58%{transform:translate3d(430%,0,0) skewX(-16deg);opacity:.25}
-  59%,100%{transform:translate3d(430%,0,0) skewX(-16deg);opacity:0}
-}
-.btn-appointment::after{
-  background:
-    radial-gradient(75% 110% at 18% 0%,rgba(255,255,255,.28),transparent 54%),
-    linear-gradient(180deg,rgba(255,255,255,.10),transparent 46%,rgba(90,0,6,.08))!important;
-}
-@media(prefers-reduced-motion:reduce){.btn-appointment::before{animation:none!important;opacity:.25!important}}
-
-/* Alpha 0.24 — mobile-safe idle glass motion.
-   The CTA breathes continuously even without hover/touch:
-   a very soft light pulse + a slow glass reflection. */
-.btn-appointment{
-  animation:cta-glass-breathe 4.8s ease-in-out infinite!important;
-  will-change:transform,box-shadow,filter!important;
-}
-.btn-appointment::before{
-  animation:cta-glass-sheen-mobile 5.6s cubic-bezier(.37,0,.63,1) infinite!important;
-  will-change:transform,opacity!important;
-}
-.btn-appointment::after{
-  animation:cta-glass-highlight 4.8s ease-in-out infinite!important;
-  will-change:opacity,transform!important;
-}
-@keyframes cta-glass-breathe{
-  0%,100%{
-    transform:translate3d(0,0,0) scale(1);
-    box-shadow:
-      0 10px 27px rgba(185,13,21,.18),
-      inset 0 1px 0 rgba(255,255,255,.76),
-      inset 0 -1px 0 rgba(103,0,7,.15),
-      inset 10px 0 30px rgba(255,255,255,.06);
-    filter:saturate(1) brightness(1);
-  }
-  48%{
-    transform:translate3d(0,-1px,0) scale(1.008);
-    box-shadow:
-      0 14px 34px rgba(185,13,21,.25),
-      inset 0 1px 0 rgba(255,255,255,.84),
-      inset 0 -1px 0 rgba(103,0,7,.15),
-      inset 13px 0 34px rgba(255,255,255,.10);
-    filter:saturate(1.035) brightness(1.018);
-  }
-}
-@keyframes cta-glass-sheen-mobile{
-  0%,18%{
-    transform:translate3d(-180%,0,0) skewX(-16deg);
-    opacity:0;
-  }
-  31%{opacity:.26}
-  46%{
-    transform:translate3d(270%,0,0) skewX(-16deg);
-    opacity:.72;
-  }
-  59%{
-    transform:translate3d(420%,0,0) skewX(-16deg);
-    opacity:0;
-  }
-  60%,100%{
-    transform:translate3d(420%,0,0) skewX(-16deg);
-    opacity:0;
-  }
-}
-@keyframes cta-glass-highlight{
-  0%,100%{opacity:.88;transform:translate3d(0,0,0)}
-  45%{opacity:1;transform:translate3d(0,-.5px,0)}
-  58%{opacity:.82;transform:translate3d(0,.3px,0)}
-}
-.btn-appointment:hover{
-  animation-play-state:paused!important;
-  transform:translateY(-2px) scale(1.01)!important;
-}
-.btn-appointment:active{
-  animation-play-state:paused!important;
-  transform:translateY(0) scale(.985)!important;
-}
-@media(prefers-reduced-motion:reduce){
-  .btn-appointment,
-  .btn-appointment::before,
-  .btn-appointment::after{
-    animation:none!important;
-  }
-}
-
-/* Alpha 0.25 — robust mobile animation.
-   Do not rely on transform/filter animation on the button itself.
-   Animate the glass layers directly; this remains visible on touch devices. */
-.btn-appointment{
-  animation:none!important;
-  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease!important;
-}
-.btn-appointment::before{
-  animation:cta-mobile-light 3.6s ease-in-out infinite!important;
-  opacity:.62!important;
-  transform:translate3d(-160%,0,0) skewX(-16deg)!important;
-}
-.btn-appointment::after{
-  animation:cta-mobile-glass 3.6s ease-in-out infinite!important;
-}
-@keyframes cta-mobile-light{
-  0%,20%{
-    transform:translate3d(-160%,0,0) skewX(-16deg);
-    opacity:0;
-  }
-  30%{opacity:.22}
-  45%{
-    transform:translate3d(300%,0,0) skewX(-16deg);
-    opacity:.68;
-  }
-  58%,100%{
-    transform:translate3d(460%,0,0) skewX(-16deg);
-    opacity:0;
-  }
-}
-@keyframes cta-mobile-glass{
-  0%,100%{
-    opacity:.86;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.28);
-  }
-  38%{
-    opacity:1;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.52);
-  }
-  52%{
-    opacity:.90;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.34);
-  }
-}
-@media (hover:none){
-  .btn-appointment::before{
-    animation:cta-mobile-light 3.1s ease-in-out infinite!important;
-  }
-  .btn-appointment::after{
-    animation:cta-mobile-glass 3.1s ease-in-out infinite!important;
-  }
-}
-@media (prefers-reduced-motion:reduce){
-  .btn-appointment::before,
-  .btn-appointment::after{animation:none!important}
-}
+@keyframes cta-liquid-drift{0%,100%{transform:translate3d(-3%,0,0) scale(1);opacity:.60}35%{transform:translate3d(3%,1px,0) scale(1.018);opacity:.82}68%{transform:translate3d(-1%,0,0) scale(1.008);opacity:.68}}
+@keyframes cta-glass-breathe{0%,100%{opacity:.82}45%{opacity:1}65%{opacity:.88}}
+@media(prefers-reduced-motion:reduce){.btn-appointment::before,.btn-appointment::after{animation:none!important}}
