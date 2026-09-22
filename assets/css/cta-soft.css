@@ -112,3 +112,78 @@
     linear-gradient(180deg,rgba(255,255,255,.10),transparent 46%,rgba(90,0,6,.08))!important;
 }
 @media(prefers-reduced-motion:reduce){.btn-appointment::before{animation:none!important;opacity:.25!important}}
+
+/* Alpha 0.24 — mobile-safe idle glass motion.
+   The CTA breathes continuously even without hover/touch:
+   a very soft light pulse + a slow glass reflection. */
+.btn-appointment{
+  animation:cta-glass-breathe 4.8s ease-in-out infinite!important;
+  will-change:transform,box-shadow,filter!important;
+}
+.btn-appointment::before{
+  animation:cta-glass-sheen-mobile 5.6s cubic-bezier(.37,0,.63,1) infinite!important;
+  will-change:transform,opacity!important;
+}
+.btn-appointment::after{
+  animation:cta-glass-highlight 4.8s ease-in-out infinite!important;
+  will-change:opacity,transform!important;
+}
+@keyframes cta-glass-breathe{
+  0%,100%{
+    transform:translate3d(0,0,0) scale(1);
+    box-shadow:
+      0 10px 27px rgba(185,13,21,.18),
+      inset 0 1px 0 rgba(255,255,255,.76),
+      inset 0 -1px 0 rgba(103,0,7,.15),
+      inset 10px 0 30px rgba(255,255,255,.06);
+    filter:saturate(1) brightness(1);
+  }
+  48%{
+    transform:translate3d(0,-1px,0) scale(1.008);
+    box-shadow:
+      0 14px 34px rgba(185,13,21,.25),
+      inset 0 1px 0 rgba(255,255,255,.84),
+      inset 0 -1px 0 rgba(103,0,7,.15),
+      inset 13px 0 34px rgba(255,255,255,.10);
+    filter:saturate(1.035) brightness(1.018);
+  }
+}
+@keyframes cta-glass-sheen-mobile{
+  0%,18%{
+    transform:translate3d(-180%,0,0) skewX(-16deg);
+    opacity:0;
+  }
+  31%{opacity:.26}
+  46%{
+    transform:translate3d(270%,0,0) skewX(-16deg);
+    opacity:.72;
+  }
+  59%{
+    transform:translate3d(420%,0,0) skewX(-16deg);
+    opacity:0;
+  }
+  60%,100%{
+    transform:translate3d(420%,0,0) skewX(-16deg);
+    opacity:0;
+  }
+}
+@keyframes cta-glass-highlight{
+  0%,100%{opacity:.88;transform:translate3d(0,0,0)}
+  45%{opacity:1;transform:translate3d(0,-.5px,0)}
+  58%{opacity:.82;transform:translate3d(0,.3px,0)}
+}
+.btn-appointment:hover{
+  animation-play-state:paused!important;
+  transform:translateY(-2px) scale(1.01)!important;
+}
+.btn-appointment:active{
+  animation-play-state:paused!important;
+  transform:translateY(0) scale(.985)!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .btn-appointment,
+  .btn-appointment::before,
+  .btn-appointment::after{
+    animation:none!important;
+  }
+}
