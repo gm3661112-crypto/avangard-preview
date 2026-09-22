@@ -1,0 +1,1 @@
+.shell{width:min(calc(100% - 64px),var(--container));margin-inline:auto}.section{padding:92px 0}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:900px){.shell{width:min(calc(100% - 32px),var(--container))}.section{padding:68px 0}}

@@ -1,0 +1,1 @@
+@media (prefers-reduced-motion:no-preference){html.motion [data-reveal]{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.25,1)}html.motion [data-reveal].before-reveal{opacity:0;transform:translateY(24px)}html.motion [data-reveal].is-visible{opacity:1;transform:none}}
