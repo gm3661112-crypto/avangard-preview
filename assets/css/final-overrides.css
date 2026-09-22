@@ -653,3 +653,24 @@ body{font-size:var(--type-body);line-height:var(--lh-body);color:var(--ink)}
   .compact-phone{width:205px!important;min-width:205px!important}
   .brand-lockup{flex:0 1 210px!important;min-width:190px!important}
 }
+
+
+/* Contact duplication rule:
+   the burger contains only information that is NOT already visible in the header. */
+@media (min-width:1021px){
+  .mobile-menu-contacts{display:none!important}
+}
+@media (min-width:901px) and (max-width:1020px){
+  /* At this width the header keeps only the phone; address remains in the burger. */
+  .compact-location{display:none!important}
+  .compact-phone{display:flex!important;width:188px!important;min-width:188px!important}
+  .brand-lockup{flex:1 1 auto!important;min-width:0!important}
+  .mobile-menu-contacts{display:grid!important;grid-template-columns:1fr!important}
+  .mobile-contact-card:nth-child(2){display:none!important}
+}
+@media (max-width:900px){
+  /* Mobile header has neither contact, so the burger shows both. */
+  .mobile-menu-contacts{display:grid!important}
+  .mobile-contact-card:nth-child(1),
+  .mobile-contact-card:nth-child(2){display:grid!important}
+}
