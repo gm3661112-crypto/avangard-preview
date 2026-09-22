@@ -93,3 +93,136 @@
   .header-actions{flex-basis:132px!important;width:132px!important;min-width:132px!important}
   .header-actions .btn-appointment{width:132px!important;min-width:132px!important;flex-basis:132px!important;font-size:.60rem!important}
 }
+
+/* Alpha 0.21: readable tablet/Android-desktop header.
+   Keep address + phone + CTA visible in one row; remove only the two social buttons
+   in this constrained width so typography does not collapse or overlap. */
+@media (min-width:901px) and (max-width:1100px){
+  .header-glass{
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    align-items:center!important;
+    width:calc(100% - 24px)!important;
+    height:88px!important;
+    min-height:88px!important;
+    padding:8px 9px 8px 11px!important;
+    gap:7px!important;
+    overflow:hidden!important;
+  }
+  .brand-lockup{
+    flex:0 0 150px!important;
+    width:150px!important;
+    gap:7px!important;
+    min-width:150px!important;
+  }
+  .brand-mark{width:51px!important}
+  .brand-copy{gap:3px!important}
+  .brand-name{font-size:1.06rem!important;font-weight:700!important;line-height:1!important}
+  .brand-subtitle{
+    display:block!important;
+    max-width:92px!important;
+    font-size:.65rem!important;
+    line-height:1.18!important;
+    white-space:normal!important;
+  }
+  .brand-subtitle--desktop{display:block!important}
+  .brand-subtitle--mobile{display:none!important}
+
+  .header-nav{
+    flex:1 1 225px!important;
+    width:225px!important;
+    min-width:205px!important;
+    max-width:240px!important;
+    justify-content:flex-start!important;
+    gap:7px!important;
+    padding:0!important;
+    overflow:hidden!important;
+  }
+  .header-nav a{
+    font-size:.78rem!important;
+    font-weight:700!important;
+    line-height:1.12!important;
+    padding:10px 0!important;
+    letter-spacing:-.018em!important;
+  }
+
+  .header-actions{
+    flex:0 0 auto!important;
+    width:auto!important;
+    min-width:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:4px!important;
+    overflow:visible!important;
+  }
+  .header-actions .meta-link{
+    display:grid!important;
+    min-height:52px!important;
+    padding:3px 4px!important;
+    border-radius:14px!important;
+    grid-template-columns:30px minmax(0,1fr)!important;
+    gap:5px!important;
+  }
+  .header-actions .meta-icon{
+    width:30px!important;
+    height:30px!important;
+  }
+  .header-actions .meta-icon svg{width:19px!important;height:19px!important}
+  .header-actions .meta-copy{gap:2px!important}
+  .header-actions .meta-copy strong{
+    font-size:.72rem!important;
+    line-height:1.15!important;
+    white-space:nowrap!important;
+  }
+  .header-actions .meta-copy small{
+    font-size:.64rem!important;
+    line-height:1.15!important;
+    white-space:nowrap!important;
+  }
+  .header-actions .location-link{
+    display:grid!important;
+    width:139px!important;
+    min-width:139px!important;
+    flex:0 0 139px!important;
+  }
+  .header-actions .phone-link{
+    display:grid!important;
+    width:147px!important;
+    min-width:147px!important;
+    flex:0 0 147px!important;
+  }
+  .header-actions .phone-link .meta-copy strong{
+    font-size:.76rem!important;
+    letter-spacing:-.015em!important;
+  }
+  .header-actions .social-group{display:none!important}
+  .header-actions .btn-appointment{
+    display:inline-flex!important;
+    width:132px!important;
+    min-width:132px!important;
+    flex:0 0 132px!important;
+    min-height:50px!important;
+    padding:0 8px!important;
+    font-size:.66rem!important;
+    line-height:1.12!important;
+    letter-spacing:.015em!important;
+    text-align:center!important;
+    white-space:normal!important;
+  }
+  .compact-header-actions{display:none!important}
+}
+@media (min-width:901px) and (max-width:980px){
+  .header-glass{gap:5px!important;padding-inline:7px!important}
+  .brand-lockup{flex-basis:142px!important;width:142px!important;min-width:142px!important}
+  .brand-mark{width:48px!important}
+  .brand-name{font-size:1.02rem!important}
+  .brand-subtitle{font-size:.62rem!important;max-width:88px!important}
+  .header-nav{flex-basis:205px!important;width:205px!important;min-width:190px!important;gap:6px!important}
+  .header-nav a{font-size:.75rem!important}
+  .header-actions .location-link{width:132px!important;min-width:132px!important;flex-basis:132px!important}
+  .header-actions .phone-link{width:139px!important;min-width:139px!important;flex-basis:139px!important}
+  .header-actions .btn-appointment{width:126px!important;min-width:126px!important;flex-basis:126px!important;font-size:.62rem!important}
+  .header-actions .meta-copy strong{font-size:.69rem!important}
+  .header-actions .meta-copy small{font-size:.61rem!important}
+}
