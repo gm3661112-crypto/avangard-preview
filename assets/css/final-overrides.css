@@ -581,3 +581,75 @@ body{font-size:var(--type-body);line-height:var(--lh-body);color:var(--ink)}
   min-height:54px!important;
   font-size:.82rem!important;
 }
+
+
+/* Header menu refinement — Android desktop/tablet widths.
+   Keep the header readable and let the opened menu use the available width.
+   The backdrop must not blur/dim the logo or header contact line. */
+@media (min-width:901px){
+  .mobile-menu[open]::before{
+    display:none!important;
+    content:none!important;
+  }
+  .mobile-menu-panel{
+    top:98px!important;
+    right:14px!important;
+    left:auto!important;
+    width:min(680px,calc(100vw - 28px))!important;
+    max-width:none!important;
+    border-radius:22px!important;
+    padding:14px!important;
+  }
+  .mobile-menu-nav{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+  .mobile-menu-nav a{
+    min-width:0!important;
+    white-space:nowrap!important;
+    text-align:center!important;
+    padding-inline:10px!important;
+  }
+  .mobile-menu-contacts{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+  .mobile-contact-card{
+    grid-template-columns:42px minmax(0,1fr)!important;
+    min-width:0!important;
+  }
+  .mobile-contact-card>span:last-child{min-width:0!important}
+  .mobile-contact-card strong,
+  .mobile-contact-card small{
+    white-space:nowrap!important;
+  }
+}
+
+@media (min-width:901px) and (max-width:1100px){
+  .mobile-menu-panel{
+    top:96px!important;
+    width:min(680px,calc(100vw - 24px))!important;
+    right:12px!important;
+  }
+}
+
+/* In the compact header itself, never break the address into an awkward stack. */
+@media (min-width:901px) and (max-width:1199px){
+  .compact-info-item{
+    white-space:nowrap!important;
+  }
+  .compact-info-item>span:last-child{
+    min-width:0!important;
+  }
+  .compact-info-item b,
+  .compact-info-item small{
+    white-space:nowrap!important;
+  }
+  .compact-location{width:250px!important;min-width:250px!important}
+  .compact-phone{width:200px!important;min-width:200px!important}
+}
+@media (min-width:901px) and (max-width:1020px){
+  .compact-location{display:flex!important;width:250px!important;min-width:250px!important}
+  .compact-phone{width:205px!important;min-width:205px!important}
+  .brand-lockup{flex:0 1 210px!important;min-width:190px!important}
+}
