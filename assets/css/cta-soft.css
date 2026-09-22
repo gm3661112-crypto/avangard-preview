@@ -29,3 +29,38 @@
 @keyframes cta-liquid-drift{0%,100%{transform:translate3d(-3%,0,0) scale(1);opacity:.60}35%{transform:translate3d(3%,1px,0) scale(1.018);opacity:.82}68%{transform:translate3d(-1%,0,0) scale(1.008);opacity:.68}}
 @keyframes cta-glass-breathe{0%,100%{opacity:.82}45%{opacity:1}65%{opacity:.88}}
 @media(prefers-reduced-motion:reduce){.btn-appointment::before,.btn-appointment::after{animation:none!important}}
+
+
+/* Reliable fallback animation: pure CSS, works independently of JS.
+   The motion is intentionally slow and low-contrast. */
+.btn-appointment{
+  animation:cta-modern-pulse 4.8s ease-in-out infinite!important;
+}
+.btn-appointment::before{
+  animation:cta-modern-reflection 5.8s ease-in-out infinite!important;
+}
+.btn-appointment::after{
+  animation:cta-modern-surface 4.8s ease-in-out infinite!important;
+}
+@keyframes cta-modern-pulse{
+  0%,100%{
+    box-shadow:0 10px 28px rgba(185,13,21,.18),inset 0 1px 0 rgba(255,255,255,.66),inset 0 -1px 0 rgba(103,0,7,.12);
+  }
+  48%{
+    box-shadow:0 13px 31px rgba(185,13,21,.24),inset 0 1px 0 rgba(255,255,255,.78),inset 0 -1px 0 rgba(103,0,7,.10);
+  }
+}
+@keyframes cta-modern-reflection{
+  0%,100%{transform:translate3d(-2%,0,0) scale(1);opacity:.48}
+  42%{transform:translate3d(3%,1px,0) scale(1.018);opacity:.68}
+  72%{transform:translate3d(0,0,0) scale(1.006);opacity:.52}
+}
+@keyframes cta-modern-surface{
+  0%,100%{opacity:.78}
+  45%{opacity:.98}
+  64%{opacity:.84}
+}
+@media(prefers-reduced-motion:reduce){
+  .btn-appointment{animation:none!important}
+  .btn-appointment::before,.btn-appointment::after{animation:none!important}
+}
