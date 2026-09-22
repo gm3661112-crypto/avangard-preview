@@ -1,4 +1,4 @@
-/* Alpha 0.9 — visible liquid/frosted glass at rest, no animated contour. */
+/* Alpha 0.10 — liquid/frosted CTA with clearly visible idle animation on touch devices. */
 .btn-appointment{
   overflow:hidden;
   border:1px solid rgba(255,255,255,.56)!important;
@@ -8,18 +8,12 @@
     linear-gradient(145deg,rgba(240,64,71,.78),rgba(204,14,22,.80) 52%,rgba(166,2,11,.79))!important;
   color:#fff;
   text-shadow:0 1px 1px rgba(92,0,6,.13);
-  box-shadow:
-    0 10px 28px rgba(185,13,21,.15),
-    inset 0 1px 0 rgba(255,255,255,.72),
-    inset 0 -1px 0 rgba(102,0,6,.10),
-    inset 14px 0 30px rgba(255,255,255,.055),
-    inset -12px -8px 24px rgba(92,0,6,.06)!important;
+  box-shadow:0 10px 28px rgba(185,13,21,.15),inset 0 1px 0 rgba(255,255,255,.72),inset 0 -1px 0 rgba(102,0,6,.10),inset 14px 0 30px rgba(255,255,255,.055),inset -12px -8px 24px rgba(92,0,6,.06)!important;
   -webkit-backdrop-filter:blur(24px) saturate(148%);
   backdrop-filter:blur(24px) saturate(148%);
   transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .42s ease,background .42s ease,border-color .42s ease!important;
 }
 
-/* Moving frosted caustics inside the glass. */
 .btn-appointment::before{
   content:"";
   position:absolute;
@@ -39,12 +33,10 @@
     linear-gradient(116deg,transparent 24%,rgba(255,255,255,.18) 41%,rgba(255,255,255,.05) 54%,transparent 70%)!important;
   background-size:128% 128%,122% 122%,114% 114%,170% 100%!important;
   filter:blur(7px);
-  mix-blend-mode:screen;
   transform:translate3d(-5%,-2%,0) rotate(-4deg) scale(1.02)!important;
   animation:glass-caustics 7.8s cubic-bezier(.45,.05,.55,.95) infinite alternate!important;
 }
 
-/* Periodic soft reflection: visible even when the button is untouched. */
 .btn-appointment::after{
   content:"";
   position:absolute;
@@ -64,56 +56,50 @@
   animation:glass-soft-sweep 6.8s ease-in-out infinite!important;
   transition:opacity .35s ease,filter .35s ease!important;
 }
-
 .btn-appointment .btn-label{position:relative;z-index:2}
 
-.btn-appointment:hover{
-  transform:translateY(-2px);
-  border-color:rgba(255,255,255,.72)!important;
-  background:
-    radial-gradient(120% 135% at 18% -18%,rgba(255,255,255,.40),transparent 34%),
-    linear-gradient(118deg,rgba(255,255,255,.13) 0 20%,transparent 38% 60%,rgba(255,255,255,.08) 80%,transparent 100%),
-    linear-gradient(145deg,rgba(243,76,82,.80),rgba(207,18,26,.82) 52%,rgba(174,5,14,.81))!important;
-  box-shadow:
-    0 15px 34px rgba(185,13,21,.19),
-    0 4px 18px rgba(255,255,255,.12),
-    inset 0 1px 0 rgba(255,255,255,.80),
-    inset 0 -1px 0 rgba(102,0,6,.09)!important;
-}
+.btn-appointment:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.72)!important;box-shadow:0 15px 34px rgba(185,13,21,.19),0 4px 18px rgba(255,255,255,.12),inset 0 1px 0 rgba(255,255,255,.80),inset 0 -1px 0 rgba(102,0,6,.09)!important}
 .btn-appointment:hover::before{opacity:.96;filter:blur(6px) brightness(1.06);animation-duration:5.9s!important}
 .btn-appointment:hover::after{opacity:.34;filter:blur(2px);animation-duration:4.8s!important}
 .btn-appointment:active{transform:translateY(0) scale(.99)}
 
 @keyframes glass-caustics{
-  0%{
-    transform:translate3d(-6%,-3%,0) rotate(-4deg) scale(1.01);
-    background-position:0% 10%,8% 92%,92% 8%,0% 0%;
-  }
-  46%{
-    transform:translate3d(0%,3%,0) rotate(.5deg) scale(1.055);
-    background-position:24% 20%,52% 60%,76% 28%,46% 0%;
-  }
-  100%{
-    transform:translate3d(7%,-1%,0) rotate(3deg) scale(1.02);
-    background-position:46% 4%,84% 30%,60% 44%,100% 0%;
-  }
+  0%{transform:translate3d(-6%,-3%,0) rotate(-4deg) scale(1.01);background-position:0% 10%,8% 92%,92% 8%,0% 0%}
+  46%{transform:translate3d(0%,3%,0) rotate(.5deg) scale(1.055);background-position:24% 20%,52% 60%,76% 28%,46% 0%}
+  100%{transform:translate3d(7%,-1%,0) rotate(3deg) scale(1.02);background-position:46% 4%,84% 30%,60% 44%,100% 0%}
 }
-
 @keyframes glass-soft-sweep{
   0%,42%{left:-58%;opacity:.08}
   52%{opacity:.18}
   67%{left:126%;opacity:.24}
-  73%{left:126%;opacity:.08}
-  100%{left:126%;opacity:.08}
+  73%,100%{left:126%;opacity:.08}
 }
 
+/* Touch/mobile: animate the actual button background too. This is intentionally
+   more visible than the desktop idle effect and does not rely on hover. */
 @media(hover:none){
-  .btn-appointment{animation:glass-breathe 5.6s ease-in-out infinite!important}
-  .btn-appointment::before{opacity:.84;animation-duration:8.8s!important}
-  .btn-appointment::after{opacity:.10;animation-duration:7.4s!important}
-  @keyframes glass-breathe{
-    0%,100%{box-shadow:0 9px 24px rgba(185,13,21,.13),inset 0 1px 0 rgba(255,255,255,.66),inset 12px 0 26px rgba(255,255,255,.05)}
-    50%{box-shadow:0 13px 30px rgba(185,13,21,.18),inset 0 1px 0 rgba(255,255,255,.80),inset 18px 0 34px rgba(255,255,255,.08)}
+  .btn-appointment{
+    background:
+      linear-gradient(108deg,transparent 0 31%,rgba(255,255,255,.08) 38%,rgba(255,255,255,.42) 47%,rgba(255,255,255,.11) 55%,transparent 64%) 155% 0/260% 100% no-repeat,
+      radial-gradient(125% 145% at 18% -18%,rgba(255,255,255,.38),transparent 35%),
+      linear-gradient(145deg,rgba(240,64,71,.80),rgba(204,14,22,.82) 52%,rgba(166,2,11,.81))!important;
+    animation:mobile-glass-live 5.2s ease-in-out infinite!important;
+  }
+  .btn-appointment::before{opacity:.96;filter:blur(6px);animation-duration:6.9s!important}
+  .btn-appointment::after{display:none!important;animation:none!important}
+}
+@keyframes mobile-glass-live{
+  0%,18%,100%{
+    background-position:155% 0,0 0,0 0;
+    box-shadow:0 9px 24px rgba(185,13,21,.14),inset 0 1px 0 rgba(255,255,255,.66),inset 12px 0 26px rgba(255,255,255,.05)
+  }
+  52%{
+    background-position:35% 0,0 0,0 0;
+    box-shadow:0 12px 29px rgba(185,13,21,.18),inset 0 1px 0 rgba(255,255,255,.82),inset 18px 0 34px rgba(255,255,255,.09)
+  }
+  68%{
+    background-position:-65% 0,0 0,0 0;
+    box-shadow:0 14px 31px rgba(185,13,21,.20),inset 0 1px 0 rgba(255,255,255,.76),inset -10px 0 28px rgba(255,255,255,.07)
   }
 }
 
