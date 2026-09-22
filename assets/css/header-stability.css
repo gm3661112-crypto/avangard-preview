@@ -122,3 +122,32 @@
 
   .header-actions .btn-appointment{width:98px!important;min-width:98px!important;flex-basis:98px!important;min-height:40px!important;padding-inline:5px!important;font-size:.49rem!important}
 }
+
+/* Alpha 0.12 override: Android desktop-site must fit its CSS viewport. */
+@media (any-pointer:coarse) and (min-width:901px){
+  .header-glass{width:calc(100% - 20px)!important;max-width:none!important;grid-template-columns:clamp(128px,15vw,190px) minmax(220px,1fr) auto!important;gap:clamp(2px,.5vw,7px)!important;padding:7px 6px 7px 8px!important;overflow:visible!important}
+  .header-nav{display:flex!important;min-width:0!important;overflow:hidden!important;gap:clamp(2px,.5vw,8px)!important}
+  .header-nav a{font-size:clamp(.46rem,.66vw,.70rem)!important;padding:7px 0!important;white-space:nowrap!important}
+  .header-actions{display:flex!important;min-width:0!important;gap:2px!important;overflow:visible!important}
+  .header-actions .location-link{width:clamp(82px,9vw,136px)!important;min-width:clamp(82px,9vw,136px)!important;flex-basis:clamp(82px,9vw,136px)!important}
+  .header-actions .phone-link{width:clamp(108px,11vw,164px)!important;min-width:clamp(108px,11vw,164px)!important;flex-basis:clamp(108px,11vw,164px)!important}
+  .header-actions .meta-copy strong{font-size:clamp(.45rem,.56vw,.64rem)!important;white-space:nowrap!important}
+  .header-actions .meta-copy small{font-size:clamp(.37rem,.45vw,.51rem)!important;white-space:nowrap!important}
+  .header-actions .meta-link{grid-template-columns:clamp(23px,2.2vw,33px) minmax(0,1fr)!important;gap:3px!important;padding:2px!important;min-height:39px!important}
+  .header-actions .meta-icon{width:clamp(23px,2.2vw,33px)!important;height:clamp(23px,2.2vw,33px)!important}
+  .header-actions .social-group{width:clamp(50px,5vw,72px)!important;min-width:clamp(50px,5vw,72px)!important;flex-basis:clamp(50px,5vw,72px)!important;gap:2px!important}
+  .header-actions .social-link{width:clamp(24px,2.5vw,35px)!important;height:clamp(24px,2.5vw,35px)!important;flex-basis:clamp(24px,2.5vw,35px)!important}
+  .header-actions .social-svg--vk,.header-actions .social-svg--max{width:clamp(15px,1.8vw,23px)!important;height:clamp(15px,1.8vw,23px)!important}
+  .header-actions .btn-appointment{width:clamp(90px,10vw,150px)!important;min-width:clamp(90px,10vw,150px)!important;flex-basis:clamp(90px,10vw,150px)!important;min-height:39px!important;padding-inline:4px!important;font-size:clamp(.43rem,.54vw,.65rem)!important}
+  .compact-header-actions{display:none!important}.header-contact-strip{display:none!important}
+}
+@media (any-pointer:coarse) and (min-width:901px) and (max-width:1020px){
+  .header-glass{grid-template-columns:124px minmax(180px,1fr) 350px!important;gap:2px!important}
+  .brand-mark{width:50px!important}.brand-name{font-size:.74rem!important}.brand-subtitle{font-size:.38rem!important;max-width:70px!important}
+  .header-nav{gap:2px!important}.header-nav a{font-size:.44rem!important}
+  .header-actions .location-link{width:78px!important;min-width:78px!important;flex-basis:78px!important}
+  .header-actions .phone-link{width:108px!important;min-width:108px!important;flex-basis:108px!important}
+  .header-actions .social-group{width:50px!important;min-width:50px!important;flex-basis:50px!important}
+  .header-actions .social-link{width:24px!important;height:24px!important;flex-basis:24px!important}
+  .header-actions .btn-appointment{width:110px!important;min-width:110px!important;flex-basis:110px!important}
+}
