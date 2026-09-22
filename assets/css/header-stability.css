@@ -1,4 +1,4 @@
-/* Alpha 0.8 — slightly larger brand mark and deterministic Android desktop-mode header. */
+/* Alpha 0.9 — larger brand mark + stable Android desktop mode with visible primary navigation. */
 .brand-mark{width:66px!important}
 @media (min-width:1320px) and (max-width:1459px){.brand-mark{width:61px!important}}
 @media (min-width:1051px) and (max-width:1319px){.brand-mark{width:60px!important}}
@@ -8,21 +8,82 @@
 @media (max-width:390px){.brand-mark{width:51px!important}}
 @media (max-width:350px){.brand-mark{width:48px!important}}
 
-/* Android browsers use different virtual viewport widths for “Desktop site”.
-   Touch-first hardware always gets one compact desktop header state. */
+/* Android browsers choose different virtual widths for “Desktop site”.
+   On touch-first hardware above the mobile breakpoint, keep the main navigation visible.
+   Address/phone/socials stay in the burger so the header remains one stable row. */
 @media (any-pointer:coarse) and (min-width:901px){
-  .header-glass{width:min(calc(100% - 28px),var(--container))!important;grid-template-columns:minmax(245px,1fr) auto auto!important;grid-template-rows:1fr!important;align-items:center!important;gap:10px!important;min-height:82px!important;padding:8px 10px 8px 14px!important}
-  .brand-lockup{grid-column:1!important;grid-row:1!important;position:relative!important;z-index:122!important}
-  .brand-mark{width:62px!important}
-  .brand-name{font-size:1.14rem!important}
-  .brand-subtitle{font-size:.67rem!important;max-width:190px!important}
-  .header-nav{display:none!important}
-  .header-actions{display:flex!important;grid-column:2!important;grid-row:1!important;justify-content:flex-end!important;padding:0!important;border:0!important}
+  .header-glass{
+    width:min(calc(100% - 24px),1640px)!important;
+    grid-template-columns:minmax(196px,220px) minmax(0,1fr) auto auto!important;
+    grid-template-rows:1fr!important;
+    align-items:center!important;
+    gap:7px!important;
+    min-height:82px!important;
+    padding:8px 9px 8px 13px!important;
+  }
+  .brand-lockup{grid-column:1!important;grid-row:1!important;position:relative!important;z-index:122!important;gap:9px!important}
+  .brand-mark{width:60px!important}
+  .brand-name{font-size:1.06rem!important}
+  .brand-subtitle{font-size:.62rem!important;line-height:1.18!important;max-width:150px!important}
+
+  .header-nav{
+    display:flex!important;
+    grid-column:2!important;
+    grid-row:1!important;
+    min-width:0!important;
+    justify-content:center!important;
+    gap:clamp(7px,.72vw,13px)!important;
+    padding:0 2px!important;
+  }
+  .header-nav a{font-size:clamp(.69rem,.76vw,.80rem)!important;padding:10px 0!important;white-space:nowrap!important}
+
+  .header-actions{
+    display:flex!important;
+    grid-column:3!important;
+    grid-row:1!important;
+    justify-content:flex-end!important;
+    gap:0!important;
+    padding:0!important;
+    border:0!important;
+  }
   .header-actions .location-link,.header-actions .phone-link,.header-actions .social-group{display:none!important}
-  .header-actions .btn-appointment{display:inline-flex!important;min-width:154px!important;min-height:50px!important;padding-inline:15px!important;font-size:.73rem!important}
-  .compact-header-actions{display:flex!important;grid-column:3!important;grid-row:1!important;position:relative!important;z-index:123!important}
+  .header-actions .btn-appointment{
+    display:inline-flex!important;
+    min-width:142px!important;
+    min-height:48px!important;
+    padding-inline:12px!important;
+    font-size:.68rem!important;
+  }
+
+  .compact-header-actions{
+    display:flex!important;
+    grid-column:4!important;
+    grid-row:1!important;
+    position:relative!important;
+    z-index:123!important;
+    gap:0!important;
+  }
   .compact-appointment{display:none!important}
+  .mobile-menu>summary{width:42px!important;height:42px!important;border-radius:13px!important}
+
   .mobile-menu[open]::before{top:calc(env(safe-area-inset-top) + 92px)!important;z-index:109!important}
   .mobile-menu[open]>summary{z-index:124!important}
-  .mobile-menu-panel{top:calc(env(safe-area-inset-top) + 102px)!important;z-index:120!important;max-height:calc(100dvh - 116px - env(safe-area-inset-bottom))!important}
+  .mobile-menu-panel{
+    top:calc(env(safe-area-inset-top) + 102px)!important;
+    z-index:120!important;
+    max-height:calc(100dvh - 116px - env(safe-area-inset-bottom))!important;
+  }
+}
+
+/* Very narrow Android desktop-mode viewports still keep navigation visible;
+   the CTA yields space before the nav ever disappears. */
+@media (any-pointer:coarse) and (min-width:901px) and (max-width:1020px){
+  .header-glass{grid-template-columns:minmax(184px,205px) minmax(0,1fr) auto!important}
+  .header-actions{display:none!important}
+  .compact-header-actions{grid-column:3!important}
+  .brand-mark{width:58px!important}
+  .brand-name{font-size:1rem!important}
+  .brand-subtitle{font-size:.59rem!important;max-width:138px!important}
+  .header-nav{gap:6px!important}
+  .header-nav a{font-size:.66rem!important}
 }
