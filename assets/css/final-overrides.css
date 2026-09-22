@@ -1,0 +1,29 @@
+/* Alpha 0.19 canonical desktop header override */
+@media (min-width:901px){
+.header-glass{display:flex!important;flex-wrap:nowrap!important;align-items:center!important;width:calc(100% - 20px)!important;max-width:1640px!important;height:92px!important;min-height:92px!important;padding:9px 12px 9px 15px!important;gap:clamp(6px,.75vw,12px)!important;box-sizing:border-box!important;overflow:visible!important}
+.brand-lockup{flex:0 0 clamp(136px,15vw,220px)!important;min-width:0!important;gap:8px!important;padding:0!important}
+.brand-mark{width:60px!important}.brand-name{font-size:1.08rem!important;font-weight:700!important;white-space:nowrap!important}.brand-subtitle{font-size:.60rem!important;line-height:1.2!important;max-width:155px!important}
+.header-nav{display:flex!important;flex:1 1 auto!important;min-width:0!important;justify-content:flex-start!important;align-items:center!important;gap:clamp(7px,1vw,17px)!important;padding:0!important;overflow:visible!important}
+.header-nav a{flex:0 0 auto!important;font-size:clamp(.72rem,.82vw,.86rem)!important;line-height:1.15!important;font-weight:700!important;padding:11px 0!important;white-space:nowrap!important}
+.header-actions{display:flex!important;flex:0 0 auto!important;min-width:0!important;align-items:center!important;justify-content:flex-end!important;gap:5px!important;padding:0!important;border:0!important;overflow:visible!important}
+.header-actions .meta-link{min-height:52px!important;grid-template-columns:38px minmax(0,1fr)!important;gap:7px!important;padding:4px 5px!important;border-radius:15px!important}
+.header-actions .meta-icon{width:38px!important;height:38px!important}.header-actions .meta-icon svg{width:23px!important;height:23px!important}
+.header-actions .meta-copy strong{font-size:.74rem!important;font-weight:700!important;line-height:1.18!important;white-space:nowrap!important}.header-actions .meta-copy small{font-size:.64rem!important;line-height:1.18!important;white-space:nowrap!important}
+.header-actions .location-link{width:clamp(128px,12vw,210px)!important;min-width:clamp(128px,12vw,210px)!important;flex-basis:clamp(128px,12vw,210px)!important}
+.header-actions .phone-link{width:clamp(140px,11vw,190px)!important;min-width:clamp(140px,11vw,190px)!important;flex-basis:clamp(140px,11vw,190px)!important}.header-actions .phone-link .meta-copy strong{font-size:.78rem!important}
+.header-actions .social-group{width:76px!important;min-width:76px!important;flex-basis:76px!important;gap:4px!important}.header-actions .social-link{width:36px!important;height:36px!important;flex-basis:36px!important}.header-actions .social-svg--vk,.header-actions .social-svg--max{width:23px!important;height:23px!important}
+.header-actions .btn-appointment{width:clamp(138px,12vw,196px)!important;min-width:clamp(138px,12vw,196px)!important;flex-basis:clamp(138px,12vw,196px)!important;min-height:52px!important;padding-inline:10px!important;font-size:.66rem!important;font-weight:700!important}
+.compact-header-actions,.header-contact-strip{display:none!important}
+}
+@media (min-width:901px) and (max-width:1100px){
+.header-glass{height:88px!important;min-height:88px!important;gap:4px!important;padding-inline:7px!important}
+.brand-lockup{flex-basis:126px!important;gap:6px!important}.brand-mark{width:50px!important}.brand-name{font-size:.90rem!important}.brand-subtitle{font-size:.47rem!important;max-width:76px!important}
+.header-nav{gap:5px!important}.header-nav a{font-size:.72rem!important;font-weight:700!important}
+.header-actions{gap:3px!important}.header-actions .meta-link{grid-template-columns:28px minmax(0,1fr)!important;gap:4px!important;min-height:42px!important;padding:2px!important}.header-actions .meta-icon{width:28px!important;height:28px!important}.header-actions .meta-icon svg{width:18px!important;height:18px!important}.header-actions .meta-copy strong{font-size:.58rem!important}.header-actions .meta-copy small{font-size:.49rem!important}
+.header-actions .location-link{width:122px!important;min-width:122px!important;flex-basis:122px!important}.header-actions .phone-link{width:137px!important;min-width:137px!important;flex-basis:137px!important}.header-actions .phone-link .meta-copy strong{font-size:.63rem!important}
+.header-actions .social-group{width:57px!important;min-width:57px!important;flex-basis:57px!important}.header-actions .social-link{width:27px!important;height:27px!important;flex-basis:27px!important}.header-actions .social-svg--vk,.header-actions .social-svg--max{width:18px!important;height:18px!important}
+.header-actions .btn-appointment{width:126px!important;min-width:126px!important;flex-basis:126px!important;min-height:44px!important;font-size:.52rem!important;padding-inline:5px!important}
+}
+@media (min-width:1101px) and (max-width:1459px){
+.header-glass{height:92px!important;min-height:92px!important}.brand-lockup{flex-basis:168px!important}.brand-mark{width:58px!important}.header-nav a{font-size:.78rem!important}.header-actions .location-link{width:175px!important;min-width:175px!important;flex-basis:175px!important}.header-actions .phone-link{width:176px!important;min-width:176px!important;flex-basis:176px!important}.header-actions .social-group{width:68px!important;min-width:68px!important;flex-basis:68px!important}.header-actions .social-link{width:32px!important;height:32px!important;flex-basis:32px!important}.header-actions .btn-appointment{width:165px!important;min-width:165px!important;flex-basis:165px!important}
+}
