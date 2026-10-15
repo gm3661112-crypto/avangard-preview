@@ -1,123 +1,112 @@
-/* AVANGARD — modern liquid-glass CTA
-   Very subtle optical motion: the button should feel alive, not animated. */
+/* AVANGARD — canonical Liquid Glass CTA
+   Static optical depth inspired by modern Apple UI.
+   No keyframes, no runtime animation engine: later CSS updates cannot break motion. */
+
 .btn-appointment{
-  position:relative!important;isolation:isolate!important;overflow:hidden!important;
-  min-width:168px!important;min-height:50px!important;
-  border:1px solid rgba(255,255,255,.58)!important;border-radius:15px!important;
-  background:radial-gradient(120% 170% at 18% -20%,rgba(255,255,255,.34),transparent 42%),linear-gradient(135deg,#ed3b43 0%,#d51d27 54%,#bd0b15 100%)!important;
-  color:#fff!important;text-shadow:0 1px 2px rgba(83,0,5,.16)!important;
-  box-shadow:0 10px 28px rgba(185,13,21,.19),inset 0 1px 0 rgba(255,255,255,.66),inset 0 -1px 0 rgba(103,0,7,.12)!important;
-  -webkit-backdrop-filter:blur(18px) saturate(145%)!important;backdrop-filter:blur(18px) saturate(145%)!important;
-  transform:translateZ(0)!important;backface-visibility:hidden!important;
-  transition:transform .24s ease,box-shadow .35s ease,filter .35s ease!important;
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  min-width:168px!important;
+  min-height:50px!important;
+  border:1px solid rgba(255,255,255,.52)!important;
+  border-radius:16px!important;
+  color:#fff!important;
+  background:
+    radial-gradient(135% 180% at 14% -60%,rgba(255,255,255,.46) 0%,rgba(255,255,255,.16) 28%,transparent 54%),
+    linear-gradient(180deg,rgba(255,255,255,.11) 0%,rgba(255,255,255,.025) 44%,rgba(88,0,7,.055) 100%),
+    linear-gradient(135deg,rgba(239,45,54,.86) 0%,rgba(214,23,33,.78) 52%,rgba(183,5,16,.74) 100%)!important;
+  -webkit-backdrop-filter:blur(22px) saturate(180%) brightness(1.04)!important;
+  backdrop-filter:blur(22px) saturate(180%) brightness(1.04)!important;
+  box-shadow:
+    0 12px 30px rgba(154,0,10,.18),
+    0 2px 7px rgba(112,0,8,.10),
+    inset 0 1px 0 rgba(255,255,255,.74),
+    inset 0 -1px 0 rgba(92,0,7,.12)!important;
+  text-shadow:0 1px 2px rgba(72,0,5,.18)!important;
+  transform:translateZ(0)!important;
+  backface-visibility:hidden!important;
+  transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,filter .28s ease,border-color .28s ease!important;
 }
+
+/* Upper specular surface: fixed, broad and soft rather than a moving shine stripe. */
 .btn-appointment::before{
-  content:""!important;position:absolute!important;z-index:0!important;inset:-25% -45%!important;pointer-events:none!important;
-  background:radial-gradient(55% 120% at 8% 10%,rgba(255,255,255,.20),transparent 58%),linear-gradient(105deg,transparent 35%,rgba(255,255,255,.13) 49%,transparent 63%)!important;
-  filter:blur(8px)!important;opacity:.72!important;transform:translate3d(0,0,0)!important;
-  animation:cta-liquid-drift 7.5s cubic-bezier(.45,0,.55,1) infinite!important;will-change:transform,opacity!important;
-}
-.btn-appointment::after{
-  content:""!important;position:absolute!important;z-index:1!important;inset:1px!important;border-radius:14px!important;pointer-events:none!important;
-  background:radial-gradient(80% 100% at 20% 0%,rgba(255,255,255,.16),transparent 56%),linear-gradient(180deg,rgba(255,255,255,.045),transparent 48%,rgba(80,0,5,.06))!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.28)!important;opacity:.9!important;
-  animation:cta-glass-breathe 6.5s ease-in-out infinite!important;will-change:opacity!important;
-}
-.btn-appointment .btn-label{position:relative!important;z-index:2!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important}
-.btn-appointment:hover{transform:translateY(-2px)!important;filter:saturate(1.04) brightness(1.025)!important;box-shadow:0 16px 34px rgba(185,13,21,.25),inset 0 1px 0 rgba(255,255,255,.76)!important}
-.btn-appointment:active{transform:translateY(0) scale(.985)!important}
-@keyframes cta-liquid-drift{0%,100%{transform:translate3d(-3%,0,0) scale(1);opacity:.60}35%{transform:translate3d(3%,1px,0) scale(1.018);opacity:.82}68%{transform:translate3d(-1%,0,0) scale(1.008);opacity:.68}}
-@keyframes cta-glass-breathe{0%,100%{opacity:.82}45%{opacity:1}65%{opacity:.88}}
-@media(prefers-reduced-motion:reduce){.btn-appointment::before,.btn-appointment::after{animation:none!important}}
-
-
-/* Reliable fallback animation: pure CSS, works independently of JS.
-   The motion is intentionally slow and low-contrast. */
-.btn-appointment{
-  animation:cta-modern-pulse 4.8s ease-in-out infinite!important;
-}
-.btn-appointment::before{
-  animation:cta-modern-reflection 5.8s ease-in-out infinite!important;
-}
-.btn-appointment::after{
-  animation:cta-modern-surface 4.8s ease-in-out infinite!important;
-}
-@keyframes cta-modern-pulse{
-  0%,100%{
-    box-shadow:0 10px 28px rgba(185,13,21,.18),inset 0 1px 0 rgba(255,255,255,.66),inset 0 -1px 0 rgba(103,0,7,.12);
-  }
-  48%{
-    box-shadow:0 13px 31px rgba(185,13,21,.24),inset 0 1px 0 rgba(255,255,255,.78),inset 0 -1px 0 rgba(103,0,7,.10);
-  }
-}
-@keyframes cta-modern-reflection{
-  0%,100%{transform:translate3d(-2%,0,0) scale(1);opacity:.48}
-  42%{transform:translate3d(3%,1px,0) scale(1.018);opacity:.68}
-  72%{transform:translate3d(0,0,0) scale(1.006);opacity:.52}
-}
-@keyframes cta-modern-surface{
-  0%,100%{opacity:.78}
-  45%{opacity:.98}
-  64%{opacity:.84}
-}
-@media(prefers-reduced-motion:reduce){
-  .btn-appointment{animation:none!important}
-  .btn-appointment::before,.btn-appointment::after{animation:none!important}
-}
-
-
-/* CTA vNext — unmistakable but restrained optical motion.
-   Uses a dedicated highlight layer so the animation is independent of the button label. */
-.btn-appointment{
-  animation: cta-vnext-breathe 5.2s ease-in-out infinite !important;
-}
-.btn-appointment .btn-glass-shine{
+  content:""!important;
   position:absolute!important;
-  z-index:3!important;
-  top:-55%!important;
-  bottom:-55%!important;
-  left:-32%!important;
-  width:64%!important;
+  z-index:1!important;
+  left:7px!important;
+  right:7px!important;
+  top:5px!important;
+  height:46%!important;
   border-radius:999px!important;
   pointer-events:none!important;
-  background:linear-gradient(105deg,
-    transparent 0%,
-    rgba(255,255,255,.02) 28%,
-    rgba(255,255,255,.20) 49%,
-    rgba(255,255,255,.045) 58%,
-    transparent 78%)!important;
-  filter:blur(10px)!important;
-  opacity:0!important;
-  transform:translate3d(-35%,0,0)!important;
-  will-change:transform,opacity!important;
-  animation:cta-vnext-shine 5.6s cubic-bezier(.37,0,.63,1) infinite!important;
-}
-@keyframes cta-vnext-shine{
-  0%,18%{transform:translate3d(-35%,0,0) scaleX(.92)!important;opacity:0!important}
-  30%{opacity:.72!important}
-  52%{transform:translate3d(165%,0,0) scaleX(1.05)!important;opacity:.34!important}
-  62%,100%{transform:translate3d(205%,0,0) scaleX(1.08)!important;opacity:0!important}
-}
-@keyframes cta-vnext-breathe{
-  0%,100%{
-    box-shadow:0 10px 28px rgba(185,13,21,.18),inset 0 1px 0 rgba(255,255,255,.66),inset 0 -1px 0 rgba(103,0,7,.12)!important;
-  }
-  48%{
-    box-shadow:0 14px 32px rgba(185,13,21,.27),inset 0 1px 0 rgba(255,255,255,.82),inset 0 -1px 0 rgba(103,0,7,.10)!important;
-  }
-}
-@media(prefers-reduced-motion:reduce){
-  .btn-appointment,.btn-appointment .btn-glass-shine{
-    animation:none!important;
-  }
-}
-
-
-/* CTA motion is owned by cta-motion.js (Web Animations API).
-   Keep CSS animation layers disabled so later visual updates cannot fight the motion engine. */
-.btn-appointment,
-.btn-appointment::before,
-.btn-appointment::after,
-.btn-appointment .btn-glass-shine{
+  background:linear-gradient(180deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,.13) 46%,rgba(255,255,255,0) 100%)!important;
+  filter:blur(.35px)!important;
+  opacity:.92!important;
+  transform:none!important;
   animation:none!important;
+}
+
+/* Internal refraction and edge depth. */
+.btn-appointment::after{
+  content:""!important;
+  position:absolute!important;
+  z-index:2!important;
+  inset:1px!important;
+  border-radius:15px!important;
+  pointer-events:none!important;
+  background:
+    radial-gradient(90% 120% at 22% 0%,rgba(255,255,255,.13),transparent 56%),
+    radial-gradient(80% 90% at 82% 116%,rgba(94,0,7,.10),transparent 64%)!important;
+  box-shadow:
+    inset 1px 0 0 rgba(255,255,255,.13),
+    inset -1px 0 0 rgba(95,0,7,.08),
+    inset 0 1px 0 rgba(255,255,255,.18)!important;
+  opacity:1!important;
+  transform:none!important;
+  animation:none!important;
+}
+
+.btn-appointment .btn-label{
+  position:relative!important;
+  z-index:4!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  white-space:nowrap!important;
+}
+
+.btn-appointment:hover{
+  transform:translateY(-1px)!important;
+  filter:saturate(1.035) brightness(1.025)!important;
+  border-color:rgba(255,255,255,.62)!important;
+  box-shadow:
+    0 15px 34px rgba(154,0,10,.21),
+    0 3px 9px rgba(112,0,8,.11),
+    inset 0 1px 0 rgba(255,255,255,.82),
+    inset 0 -1px 0 rgba(92,0,7,.11)!important;
+}
+
+.btn-appointment:active{
+  transform:translateY(0) scale(.988)!important;
+  filter:saturate(1.01) brightness(.99)!important;
+  box-shadow:
+    0 7px 18px rgba(154,0,10,.16),
+    inset 0 1px 0 rgba(255,255,255,.64),
+    inset 0 -1px 0 rgba(92,0,7,.13)!important;
+}
+
+/* Retire layers from older animated CTA experiments if stale markup survives in cache. */
+.btn-appointment .btn-glass-shine,
+.btn-appointment .av-cta-ambient,
+.btn-appointment .av-cta-sweep,
+.btn-appointment .av-cta-glass-ambient,
+.btn-appointment .av-cta-glass-lens,
+.btn-appointment .av-cta-glass-rim,
+.btn-appointment .av-cta-glass-caustic{
+  display:none!important;
+  animation:none!important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .btn-appointment{transition:none!important}
 }
