@@ -3,10 +3,10 @@
 @import url('./typography.css');
 @import url('./layout.css');
 @import url('./header.css');
-@import url('./hero.css?v=0.2');
+@import url('./hero.css?v=0.3');
 @import url('./trust.css');
 @import url('./services.css');
 @import url('./motion.css');
 @import url('./header-fixes.css?v=0.7');
 @import url('./cta-soft.css?v=0.18');
-@import url('./header-stability.css?v=0.18');
+@import url('./header-stability.css?v=0.19');

@@ -93,19 +93,6 @@ body{font-size:var(--type-body);line-height:var(--lh-body);color:var(--ink)}
 }
 .btn-appointment .btn-label{white-space:nowrap!important}
 
-/* Hero proportions. */
-.hero{padding:42px 0 34px!important}
-.hero-grid{min-height:590px!important}
-.hero-copy{padding:42px 38px 42px 0!important}
-.hero-copy .display{max-width:780px!important;margin:22px 0 24px!important}
-.hero-actions{margin-top:28px!important;gap:13px!important}
-.hero-notes{margin-top:34px!important;font-size:.68rem!important;letter-spacing:.16em!important}
-.hero-media{min-height:560px!important}
-.hero-photo img{min-height:560px!important}
-.hero-glass{padding:15px 17px!important}
-.hero-glass b{font-size:1.08rem!important}
-.hero-glass small{font-size:.86rem!important;line-height:1.35!important}
-
 /* ---------- Canonical header ---------- */
 /* >1499px: complete one-row desktop header. */
 @media (min-width:1500px){
@@ -352,11 +339,6 @@ body{font-size:var(--type-body);line-height:var(--lh-body);color:var(--ink)}
   }
   .section-head-aside p{font-size:.96rem!important}
   .btn{min-height:52px!important;font-size:.79rem!important}
-  .hero{padding-top:16px!important}
-  .hero-copy{padding:38px 0 34px!important}
-  .hero-copy .display{margin:20px 0 22px!important}
-  .hero-actions{margin-top:26px!important}
-  .hero-notes{margin-top:30px!important;font-size:.65rem!important;letter-spacing:.13em!important}
   .service-card h3{font-size:1.48rem!important}
   .service-card p{font-size:.91rem!important}
   .service-number{font-size:3.25rem!important}

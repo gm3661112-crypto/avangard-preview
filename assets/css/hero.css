@@ -1,227 +1,95 @@
-.hero{
-  position:relative;
-  overflow:hidden;
-  padding:52px 0 34px;
-  background:
-    radial-gradient(circle at 38% 18%,rgba(215,25,32,.055),transparent 30%),
-    radial-gradient(circle at 88% 8%,rgba(255,255,255,.98),transparent 34%),
-    linear-gradient(180deg,#fbfaf8 0%,#f6f5f2 100%);
+/* AVANGARD — clinic-first editorial hero.
+   Owns every hero breakpoint. Shared appointment controls stay unchanged. */
+.hero{--hero-paper:#f8f7f4;--hero-rule:#d9d6d1;position:relative;padding:clamp(28px,3.5vw,58px) 0 0;background:var(--hero-paper);scroll-margin-top:120px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,1fr);gap:0 clamp(24px,4vw,68px);align-items:center}
+.hero-copy{position:relative;min-width:0;padding:14px 0 42px}
+.hero-title{margin:0;font-weight:400}
+.hero-location{display:flex;align-items:center;gap:12px;margin:0 0 clamp(26px,3vw,44px);font:500 clamp(.875rem,1.1vw,1rem)/1.5 var(--sans);letter-spacing:-.015em;color:#4e4d4a}
+.hero-location::before{content:"";width:28px;height:1px;flex:0 0 28px;background:var(--accent)}
+.hero-statement{display:block;font-family:var(--display);font-size:clamp(2.6rem,4.9vw,5rem);line-height:1.13;letter-spacing:-.055em}
+.hero-statement-line{display:block}
+.hero-statement em{color:var(--accent-deep);font-style:normal}
+.hero-intro{max-width:440px;margin:28px 0 0;font-size:clamp(.975rem,1.15vw,1.0625rem);line-height:1.7;color:#5c5a57}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:13px;margin-top:30px}
+/* Existing secondary-button surface, unchanged. */
+.btn-outline{background:rgba(255,255,255,.58);border-color:rgba(35,31,29,.14);color:var(--ink);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.78)}
+.hero-note{margin:17px 0 0;max-width:420px;font-size:.75rem;line-height:1.55;color:#6e6963}
+.hero-visual{position:relative;min-width:0;align-self:stretch;padding:32px 0 56px}
+.hero-photo{position:relative;height:100%;min-height:470px;margin:0}
+.hero-photo>picture{display:block;width:100%;height:100%}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:47% center}
+.hero-photo::before{content:"";position:absolute;z-index:1;top:-16px;right:-16px;width:64px;height:64px;border-top:1px solid var(--hero-rule);border-right:1px solid var(--hero-rule);pointer-events:none}
+.hero-photo figcaption{position:absolute;left:0;right:0;top:calc(100% + 14px);display:flex;justify-content:space-between;gap:12px;font-size:.6875rem;line-height:1.45;letter-spacing:.07em;color:#6e6963}
+.hero-photo figcaption span:first-child{text-transform:uppercase}
+.hero-detail{position:absolute;left:-48px;bottom:84px;width:clamp(160px,15vw,212px);margin:0;padding:8px 8px 13px;background:var(--hero-paper);box-shadow:0 8px 26px rgba(37,36,31,.06)}
+.hero-detail img{width:100%;height:auto;aspect-ratio:1.5;object-fit:cover}
+.hero-detail figcaption{padding:9px 5px 0;line-height:1.4}
+.hero-detail span{display:block;font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:#77716a}
+.hero-detail strong{display:block;margin-top:3px;font-size:.8rem;font-weight:500;color:#3b3935}
+.hero-footer{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:24px;padding:24px 0 26px;border-top:1px solid var(--hero-rule)}
+.hero-route{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;padding:0;margin:0;list-style:none;font-size:.6875rem;line-height:1.5;letter-spacing:.08em;text-transform:uppercase;color:#53504b}
+.hero-route li{display:flex;align-items:center;gap:16px}
+.hero-route li+li::before{content:"/";color:#b3aaa0}
+.hero-address{margin:0;text-align:right;font-size:.8125rem;line-height:1.6;color:#5c5a57}
+.hero-address span{color:#292825}
+/* Compact desktop, including Android desktop mode. */
+@media(min-width:901px) and (max-width:1199px){
+  .hero-grid{grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:0 30px}
+  .hero-statement{font-size:clamp(2.6rem,4.75vw,3.55rem)}
+  .hero-copy{padding-bottom:32px}
+  .hero-location{gap:9px;font-size:.8125rem}
+  .hero-location::before{width:20px;flex-basis:20px}
+  .hero-intro{max-width:360px;margin-top:24px}
+  .hero-detail{left:-20px;width:154px;bottom:90px}
+  .hero-photo{min-height:490px}
+  .hero-actions{gap:12px;margin-top:24px}
+  .hero-photo figcaption{flex-direction:column;gap:0}
 }
-.hero:before{
-  content:"";
-  position:absolute;
-  width:760px;
-  height:760px;
-  left:25%;
-  top:-330px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.96),rgba(255,255,255,0) 66%);
-  pointer-events:none;
-}
-.hero-watermark{
-  position:absolute;
-  left:31%;
-  top:-34px;
-  width:min(34vw,500px);
-  opacity:.032;
-  filter:saturate(.55);
-  pointer-events:none;
-}
-.hero-grid{
-  position:relative;
-  display:grid;
-  grid-template-columns:minmax(0,.92fr) minmax(520px,1.08fr);
-  gap:clamp(34px,4vw,72px);
-  align-items:center;
-  min-height:620px;
-}
-.hero-copy{
-  z-index:2;
-  position:relative;
-  padding:58px 8px 58px 0;
-}
-.hero-copy:before{
-  content:"";
-  position:absolute;
-  left:-18px;
-  top:60px;
-  width:2px;
-  height:54px;
-  border-radius:99px;
-  background:linear-gradient(180deg,var(--accent),rgba(215,25,32,.12));
-}
-.hero-copy .eyebrow{
-  color:#7d7873;
-}
-.hero-copy .display{
-  max-width:760px;
-  margin:24px 0 26px;
-}
-.hero-copy .display em{
-  color:var(--accent);
-  font-style:normal;
-}
-.hero-copy .lead{
-  max-width:620px;
-}
-.hero-actions{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-top:30px;
-}
-.btn-outline{
-  background:rgba(255,255,255,.58);
-  border-color:rgba(35,31,29,.14);
-  color:var(--ink);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.78);
-}
-.hero-notes{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  margin-top:32px;
-  font-size:.66rem;
-  color:#77716d;
-  letter-spacing:.13em;
-  text-transform:uppercase;
-  flex-wrap:wrap;
-}
-.hero-notes span{
-  padding:8px 11px;
-  border:1px solid rgba(34,30,28,.08);
-  border-radius:999px;
-  background:rgba(255,255,255,.48);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.74);
-}
-.hero-notes i{display:none}
-.hero-media{
-  position:relative;
-  min-height:590px;
-  display:block;
-  background:#e9e5e0;
-  border-radius:30px;
-  box-shadow:0 28px 80px rgba(43,34,29,.12),0 2px 10px rgba(43,34,29,.05);
-  overflow:hidden;
-}
-.hero-photo{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-}
-.hero-photo img{
-  width:100%;
-  height:100%;
-  min-height:590px;
-  object-fit:cover;
-  object-position:center;
-  transform:scale(1.012);
-}
-.hero-photo:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.02),transparent 44%,rgba(22,16,13,.12)),
-    linear-gradient(90deg,rgba(255,255,255,.06),transparent 42%);
-}
-/* The hero now represents the clinic as a whole. The doctor's personal feature
-   is intentionally removed here; he will have a dedicated section/page. */
-.hero-glass{display:none!important}
-.hero-side{
-  position:absolute;
-  top:22px;
-  right:22px;
-  bottom:auto;
-  z-index:3;
-  width:auto;
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  gap:10px;
-  padding:10px 12px;
-  border:1px solid rgba(255,255,255,.72);
-  border-radius:999px;
-  background:rgba(248,247,245,.72);
-  box-shadow:0 8px 24px rgba(34,27,23,.08),inset 0 1px 0 rgba(255,255,255,.82);
-  backdrop-filter:blur(18px) saturate(135%);
-  -webkit-backdrop-filter:blur(18px) saturate(135%);
-}
-.hero-side .slide-count,.hero-side .hero-arrows{display:none}
-.hero-side p{
-  margin:0;
-  writing-mode:horizontal-tb;
-  transform:none;
-  font-size:.64rem;
-  line-height:1;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:#5f5a56;
-}
-.hero-side:before{
-  content:"";
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--accent);
-  box-shadow:0 0 0 5px rgba(215,25,32,.09);
-}
-.hero-media:after{
-  content:"Краснодар · ул. Уральская, 71";
-  position:absolute;
-  left:22px;
-  bottom:22px;
-  z-index:3;
-  padding:10px 13px;
-  border:1px solid rgba(255,255,255,.68);
-  border-radius:14px;
-  background:rgba(255,255,255,.72);
-  color:#4f4a46;
-  font-size:.72rem;
-  font-weight:600;
-  letter-spacing:.02em;
-  box-shadow:0 10px 28px rgba(30,23,20,.08),inset 0 1px 0 rgba(255,255,255,.86);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-}
-@media(max-width:1100px){
-  .hero-grid{grid-template-columns:.92fr 1.08fr;gap:28px}
-  .hero-media{min-height:540px}
-  .hero-photo img{min-height:540px}
-  .hero-copy .display{font-size:clamp(3rem,5vw,5.5rem)}
-}
+/* Tablet: wide photograph below a compact text composition. */
 @media(max-width:900px){
-  .hero{padding-top:18px}
-  .hero-grid{display:block}
-  .hero-copy{padding:46px 0 38px}
-  .hero-copy:before{display:none}
-  .hero-copy .display{font-size:clamp(3.15rem,13vw,5.4rem);max-width:760px}
-  .hero-media{min-height:460px;border-radius:24px}
-  .hero-photo img{min-height:460px}
-  .hero-side{top:16px;right:16px}
-  .hero-media:after{left:16px;bottom:16px}
+  .hero{padding-top:30px;scroll-margin-top:90px}
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-copy{padding:0 0 32px}
+  .hero-location{margin-bottom:24px;font-size:.9375rem}
+  .hero-statement{font-size:clamp(2.5rem,7.7vw,4.5rem)}
+  .hero-intro{max-width:530px;margin-top:24px;font-size:1rem}
+  .hero-actions{margin-top:24px}
+  .hero-visual{padding:0 0 44px}
+  .hero-photo{min-height:0;height:auto}
+  .hero-photo>picture{height:auto}
+  .hero-photo img{height:auto;aspect-ratio:1.8;object-position:center 60%}
+  .hero-photo::before{display:none}
+  .hero-detail{left:auto;right:18px;bottom:64px;width:170px}
+  .hero-footer{padding:21px 0 24px}
+  .hero-route{gap:8px 12px;font-size:.625rem}
+  .hero-route li{gap:12px}
+  .hero-address{font-size:.75rem}
 }
-@media(max-width:560px){
-  .hero-actions{align-items:stretch;flex-direction:column}
+/* Phone: headline and CTA first, then an uncrowded real clinic image. */
+@media(max-width:620px){
+  .hero{padding-top:24px}
+  .hero-location{font-size:.8125rem;gap:10px;margin-bottom:23px}
+  .hero-location::before{width:20px;flex-basis:20px}
+  .hero-statement{font-size:clamp(2.0625rem,7.7vw + .35rem,3.3rem);line-height:1.15;letter-spacing:-.05em}
+  .hero-statement-line{white-space:nowrap}
+  .hero-intro{margin-top:21px;max-width:430px;font-size:.9375rem;line-height:1.65}
+  .hero-actions{flex-direction:column;align-items:stretch;gap:10px;margin-top:23px}
   .hero-actions .btn{width:100%}
-  .hero-notes{gap:7px;margin-top:26px}
-  .hero-notes span{padding:7px 9px;letter-spacing:.10em}
-  .hero-media{min-height:410px;border-radius:22px}
-  .hero-photo img{min-height:410px}
-  .hero-side{display:none}
-  .hero-media:after{
-    left:12px;
-    right:12px;
-    bottom:12px;
-    width:auto;
-    text-align:center;
-    font-size:.69rem;
-  }
-  .hero-watermark{left:44%;width:80vw}
+  .hero-note{font-size:.6875rem;margin-top:12px}
+  .hero-copy{padding-bottom:27px}
+  .hero-photo img{aspect-ratio:1.5;object-position:center}
+  .hero-photo figcaption{top:calc(100% + 10px);font-size:.5625rem;letter-spacing:.055em}
+  .hero-detail{display:none}
+  .hero-visual{padding-bottom:36px}
+  .hero-footer{grid-template-columns:1fr;gap:13px;padding:19px 0 22px}
+  .hero-route{font-size:.625rem;gap:9px;letter-spacing:.065em}
+  .hero-route li{gap:9px}
+  .hero-address{text-align:left;font-size:.75rem}
 }
-@media(max-width:350px){
-  .hero-watermark{left:auto;right:0;width:76vw}
-  .hero-media:after{font-size:.64rem}
+@media(min-width:621px) and (max-width:900px){
+  .hero-copy{display:grid;grid-template-columns:1.12fr 1fr;column-gap:36px;align-items:start}
+  .hero-title{grid-column:1/-1}
+  .hero-intro{grid-column:1;margin-top:25px}
+  .hero-actions{grid-column:2;grid-row:2/4;flex-direction:column;align-items:stretch;margin-top:28px}
+  .hero-note{grid-column:1}
 }
